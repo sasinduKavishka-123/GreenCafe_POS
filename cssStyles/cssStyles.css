@@ -12,6 +12,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    z-index: 999;
 }
 
 .sideBar > h1{
@@ -83,6 +84,7 @@
     color: #fff;
     display: flex;
     align-items: center;
+    z-index: 999;
 }
 
 .navPointers{
@@ -110,10 +112,16 @@
     height: calc(100vh - 60px);     /* subtract by navbar height */
 }
 
-/************** dashboard *********************/
+#mainBody > .container{
+    margin-top: 30px !important;
+}
+
+/**************** dashboard *******************/
+/**********************************************/
+/**********************************************/
 
 #dashboard{
-    /*background-color: red;*/
+    display: none;
 }
 
 .cardHolder > .card{
@@ -166,14 +174,28 @@
     background-color: #ffc400;
 }
 
-.dbTblHolder{
-    margin-top: 50px;
+.tblHolder{
+    margin: 90px;
+    padding-bottom: 50px;
     width: 80% !important;
-    padding: 10px;
 }
 
 .criticalTbl > caption{
     font-weight: bold;
     font-size: 20px;
     color: #000;
+}
+
+
+
+/******************* POS **********************/
+/**********************************************/
+/**********************************************/
+
+
+
+.tblHolder > .navbar{
+    background-color: #fff !important;
+    width: 80% !important;
+    position: relative;
 }
