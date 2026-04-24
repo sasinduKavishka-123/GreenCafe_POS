@@ -116,8 +116,26 @@
     /*background-color: red;*/
 }
 
-.cardHolder{
-    /*background-color: #01c916;*/
+.cardHolder > .card{
+    border: #c0c0c0 solid 2px;
+    transition-duration: 500ms;
+}
+
+.cardHolder> .card:nth-child(1):hover{
+    box-shadow: 0 0 5px 2px #2B7FFF;
+    border-color: #2B7FFF;
+}
+.cardHolder> .card:nth-child(2):hover{
+    box-shadow: 0 0 5px 2px #00B412;
+    border-color: #00B412;
+}
+.cardHolder> .card:nth-child(3):hover{
+    box-shadow: 0 0 5px 2px #FF6900;
+    border-color: #FF6900;
+}
+.cardHolder> .card:nth-child(4):hover{
+    box-shadow: 0 0 5px 2px #ffc400;
+    border-color: #ffc400;
 }
 
 .cardHolder > .card{
