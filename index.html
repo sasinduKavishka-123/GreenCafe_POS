@@ -25,19 +25,19 @@
     <h1>Green Cafe</h1>
     <hr id="sidebarLine">
     <ol id="navBtnHolder">
-        <li class="navBtn">
+        <li class="navBtn" id="dashboardNavBtn">
             <i class="fa-solid fa-house navIcons"></i> Dashboard
         </li>
-        <li class="navBtn">
+        <li class="navBtn" id="posNavBtn">
             <i class="fa-solid fa-cart-shopping"></i> POS
         </li>
-        <li class="navBtn">
+        <li class="navBtn" id="customerNavBtn">
             <i class="fa-solid fa-user"></i> Customers
         </li>
-        <li class="navBtn">
+        <li class="navBtn" id="itemNavBtn">
             <i class="fa-solid fa-mug-hot"></i> Items
         </li>
-        <li class="navBtn">
+        <li class="navBtn" id="ordersNavBtn">
             <i class="fa-solid fa-clipboard"></i> Orders
         </li>
     </ol>
@@ -137,7 +137,92 @@
     </section>
 
     <!-- POS -->
-    <section id="pos" class="container"></section>
+    <section id="pos" class="container">
+
+        <form class="row g-2 w-50 m-auto">
+            <h1 class="text-center">Place Order</h1>
+
+            <label for="order_name_input" class="form-label">Customer Name</label>
+            <select class="form-select mb-3" aria-label="Default select example" id="order_name_input">
+                <option selected>Select a Customer</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+
+            <label for="order_item_input" class="form-label">Item Name</label>
+            <select class="form-select mb-3" aria-label="Default select example" id="order_item_input">
+                <option selected>Select an Item</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+
+            </select>
+
+            <div class="col-md-6">
+                <label for="order_price_input" class="form-label">Unit Price</label>
+                <input type="text" class="form-control" id="order_price_input" disabled>
+            </div>
+            <div class="col-md-6">
+                <label for="order_stock_input" class="form-label">Stock</label>
+                <input type="text" class="form-control" id="order_stock_input" disabled>
+            </div>
+            <div class="col-md-6">
+                <label for="order_qty_input" class="form-label">Quantity</label>
+                <input type="number" min="0" class="form-control" id="order_qty_input">
+            </div>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end my-btn-group">
+                <button type="button" id=" orderSaveBtn" class="btn btn-success">Save</button>
+                <button type="button" id="orderUpdateBtn" class="btn btn-warning">Update</button>
+                <button type="button" id="orderDeleteBtn" class="btn btn-danger">Delete</button>
+                <button type="reset" id="orderResetBtn" class="btn btn-info">Reset</button>
+            </div>
+        </form>
+
+        <div class="tblHolder container">
+
+            <table class="table table-hover  m-1" id="placeOrderTable">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Unit Price</th>
+                    <th scope="col">Stock</th>
+                </tr>
+                </thead>
+                <tbody id="placeOrderTBody" class="table-group-divider">
+                <tr>
+                    <th>1</th>
+                    <td>Tea</td>
+                    <td>30</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <th>2</th>
+                    <td>Coffee</td>
+                    <td>30</td>
+                    <td>100</td>
+                </tr>
+                <tr>
+                    <th>3</th>
+                    <td>Toffee</td>
+                    <td>20</td>
+                    <td>50</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h2 class="text-start d-inline-block mt-3">Sub Total: </h2>
+            <h2 class="text-start d-inline-block m-3">9999.99</h2>
+            <div class=" container text-end">
+                <button type="button" class="btn btn-success text-end">
+                    <img src="https://img.icons8.com/ios-glyphs/16/plus-math.png" alt="plus-math"/> Create Order
+                </button>
+            </div>
+
+        </div>
+
+    </section>
 
 
     <!-- Customers -->
@@ -305,6 +390,7 @@
                 </div>
             </nav>
 
+            <!-- order table -->
             <section id="orderTblHolder">
 
                 <table class="table table-hover caption-top m-1" id="orderTable">
@@ -365,9 +451,7 @@
 
             </section>
 
-
-
-
+            <!-- order detail table -->
             <table class="table table-hover caption-top m-1 mt-5" id="orderDetailTable">
                 <caption>Order Items</caption>
                 <thead>
@@ -399,10 +483,42 @@
 <!-- bootstrap -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
+<!-- bootstrap tooltip activation for searchbar -->
 <script>
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
     const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 </script>
+
+<!-- navigation -->
+<!--<script>-->
+
+<!--    //content sections-->
+<!--    let dashboardSection = document.querySelector('#dashboard');-->
+<!--    let posSection = document.querySelector('#pos');-->
+<!--    let customerSection = document.querySelector('#customer');-->
+<!--    let itemSection = document.querySelector('#item');-->
+<!--    let orderSection = document.querySelector('#order');-->
+
+<!--    // section array-->
+<!--    let sections = [dashboardSection, posSection, customerSection, itemSection, orderSection];-->
+
+<!--    // nav buttons-->
+<!--    let dashboardBtn = document.querySelector('#dashboardNavBtn');-->
+<!--    let posBtn = document.querySelector('#posNavBtn');-->
+<!--    let customerBtn = document.querySelector('#customerNavBtn');-->
+<!--    let itemBtn = document.querySelector('#itemNavBtn');-->
+<!--    let orderBtn = document.querySelector('#ordersNavBtn');-->
+
+<!--    // make all sections display none-->
+<!--    const makeSectionDisplayNone = function (){-->
+<!--        sections.forEach((section)=>{-->
+<!--           section.style.display = 'none';-->
+<!--        });-->
+<!--    };-->
+
+<!--    dashboardBtn.-->
+
+<!--</script>-->
 
 <!-- font awesome -->
 <script src="https://www.hxstrive.com/cdn/libs/font-awesome/7.0.1/js/all.min.js"></script>
