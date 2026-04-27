@@ -161,7 +161,7 @@
                 <label for="customer_address_input" class="form-label">Address</label>
                 <textarea class="form-control" id="customer_address_input" style="height: 100px"></textarea>
             </div>
-            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end my-btn-group">
                 <button type="button" id="customerSaveBtn" class="btn btn-success">Save</button>
                 <button type="button" id="customerUpdateBtn" class="btn btn-warning">Update</button>
                 <button type="button" id="customerDeleteBtn" class="btn btn-danger">Delete</button>
@@ -209,7 +209,83 @@
 
 
     <!-- Items -->
-    <section id="item" class="container"></section>
+    <section id="item" class="container">
+
+        <form class="row g-2 w-50 m-auto">
+            <h1 class="text-center">Item Management</h1>
+            <div class="mb-3">
+                <label for="item_id_input" class="form-label">ID</label>
+                <input type="text" class="form-control" id="item_id_input">
+            </div>
+            <div class="mb-3">
+                <label for="item_name_input" class="form-label">Name</label>
+                <input type="text" class="form-control" id="item_name_input">
+            </div>
+            <div class="col-md-6">
+                <label for="item_price_input" class="form-label">Unit Price</label>
+                <input type="text" class="form-control" id="item_price_input">
+            </div>
+            <div class="col-md-6">
+                <label for="item_stock_input" class="form-label">Stock</label>
+                <input type="number" min="0" class="form-control" id="item_stock_input">
+            </div>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end my-btn-group">
+                <button type="button" id="itemSaveBtn" class="btn btn-success">Save</button>
+                <button type="button" id="itemUpdateBtn" class="btn btn-warning">Update</button>
+                <button type="button" id="itemDeleteBtn" class="btn btn-danger">Delete</button>
+                <button type="reset" id="itemResetBtn" class="btn btn-info">Reset</button>
+            </div>
+        </form>
+
+        <div class="tblHolder container">
+
+            <!-- search customer -->
+            <nav class="navbar bg-body-tertiary">
+                <div class="container-fluid">
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search"
+                               aria-label="Search" data-bs-toggle="tooltip" data-bs-placement="top"
+                               data-bs-title="Search customer by ID or Name"/>
+                        <button class="btn btn-info" type="submit">Search</button>
+                    </form>
+                </div>
+            </nav>
+
+
+            <table class="table table-hover table-bordered m-1" id="itemTable">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Unit Price</th>
+                    <th scope="col">Stock</th>
+                </tr>
+                </thead>
+                <tbody id="itemTBody">
+                <tr>
+                    <th>1</th>
+                    <td>Tea</td>
+                    <td>30</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <th>2</th>
+                    <td>Coffee</td>
+                    <td>30</td>
+                    <td>100</td>
+                </tr>
+                <tr>
+                    <th>3</th>
+                    <td>Toffee</td>
+                    <td>20</td>
+                    <td>50</td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    </section>
 
 
     <!-- Orders -->

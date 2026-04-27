@@ -194,6 +194,42 @@
 
 
 
+/**************** Customer ********************/
+/**********************************************/
+/**********************************************/
+
+#customer{
+    display: none;
+}
+
+.my-btn-group > button:nth-child(1){
+    background-color: #32bb17;
+    border-color: #32bb17;
+    color: #000;
+    font-weight: bold;
+}
+
+.my-btn-group > button:nth-child(2){
+    background-color: #0086DA;
+    border-color: #0086DA;
+    color: #000;
+    font-weight: bold;
+}
+
+.my-btn-group > button:nth-child(3){
+    background-color: #FE0808;
+    border-color: #FE0808;
+    color: #000;
+    font-weight: bold;
+}
+
+.my-btn-group > button:nth-child(4){
+    background-color: #A600FF;
+    border-color: #A600FF;
+    color: #000;
+    font-weight: bold;
+}
+
 .tblHolder > .navbar{
     background-color: #fff !important;
     width: 80% !important;
