@@ -94,7 +94,7 @@
     height: 55%;
     border-radius: 3px;
     background-color: #01c916;
-    margin: 0 15px;
+    margin: 0 15px !important;
 }
 
 .navDataHolder{
@@ -112,6 +112,7 @@
     background-color: #fff;
     width: calc(100vw - 250px);     /* subtract by sidebar width */
     height: calc(100vh - 60px);     /* subtract by navbar height */
+    overflow-x: hidden;
 }
 
 #mainBody > .container{
