@@ -103,7 +103,7 @@
         <!-- critical table -->
         <div class="tblHolder container">
 
-            <table class="table table-hover caption-top table-bordered criticalTbl">
+            <table class="table table-hover caption-top criticalTbl">
                 <caption>Critical Stock Levels</caption>
                 <thead>
                 <tr>
@@ -184,7 +184,7 @@
             </nav>
 
 
-            <table class="table table-hover table-bordered m-1" id="customerTable">
+            <table class="table table-hover m-1" id="customerTable">
                 <thead>
                 <tr>
                     <th scope="col">ID</th>
@@ -193,7 +193,7 @@
                     <th scope="col">Address</th>
                 </tr>
                 </thead>
-                <tbody id="studentTBody">
+                <tbody id="customerTBody" class="table-group-divider">
                 <tr>
                     <th scope="row">1</th>
                     <td>Anura Kumara</td>
@@ -239,20 +239,20 @@
 
         <div class="tblHolder container">
 
-            <!-- search customer -->
+            <!-- item search -->
             <nav class="navbar bg-body-tertiary">
                 <div class="container-fluid">
                     <form class="d-flex" role="search">
                         <input class="form-control me-2" type="search" placeholder="Search"
                                aria-label="Search" data-bs-toggle="tooltip" data-bs-placement="top"
-                               data-bs-title="Search customer by ID or Name"/>
+                               data-bs-title="Search item by ID or Name"/>
                         <button class="btn btn-info" type="submit">Search</button>
                     </form>
                 </div>
             </nav>
 
 
-            <table class="table table-hover table-bordered m-1" id="itemTable">
+            <table class="table table-hover  m-1" id="itemTable">
                 <thead>
                 <tr>
                     <th scope="col">ID</th>
@@ -261,7 +261,7 @@
                     <th scope="col">Stock</th>
                 </tr>
                 </thead>
-                <tbody id="itemTBody">
+                <tbody id="itemTBody" class="table-group-divider">
                 <tr>
                     <th>1</th>
                     <td>Tea</td>
@@ -289,7 +289,68 @@
 
 
     <!-- Orders -->
-    <section id="order" class="container"></section>
+    <section id="order" class="container">
+
+        <div class="tblHolder container">
+
+            <!-- order search -->
+            <nav class="navbar bg-body-tertiary">
+                <div class="container-fluid">
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search"
+                               aria-label="Search" data-bs-toggle="tooltip" data-bs-placement="top"
+                               data-bs-title="Search order by ID or Name"/>
+                        <button class="btn btn-info" type="submit">Search</button>
+                    </form>
+                </div>
+            </nav>
+
+
+            <table class="table table-hover caption-top m-1" id="orderTable">
+                <caption>Orders</caption>
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Customer Name</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Total</th>
+                </tr>
+                </thead>
+                <tbody id="orderTBody" class="table-group-divider">
+                <tr>
+                    <th>1</th>
+                    <td>Tea</td>
+                    <td>30</td>
+                    <td>10</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <table class="table table-hover caption-top m-1 mt-5" id="orderDetailTable">
+                <caption>Order Items</caption>
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Item Name</th>
+                    <th scope="col">Qty</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Total</th>
+                </tr>
+                </thead>
+                <tbody id="orderDetailTBody" class="table-group-divider">
+                <tr>
+                    <th>1</th>
+                    <td>Tea</td>
+                    <td>30</td>
+                    <td>30</td>
+                    <td>10</td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    </section>
 
 </main>
 

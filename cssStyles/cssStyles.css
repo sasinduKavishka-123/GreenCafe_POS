@@ -180,7 +180,7 @@
     width: 80% !important;
 }
 
-.criticalTbl > caption{
+caption{
     font-weight: bold;
     font-size: 20px;
     color: #000;
@@ -234,4 +234,22 @@
     background-color: #fff !important;
     width: 80% !important;
     position: relative;
+}
+
+
+/****************** Item **********************/
+/**********************************************/
+/**********************************************/
+
+#item{
+    display: none;
+}
+
+
+/***************** Orders *********************/
+/**********************************************/
+/**********************************************/
+
+#orderDetailTBody{
+    margin-top: 20px !important;
 }
