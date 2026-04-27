@@ -124,7 +124,7 @@
 /**********************************************/
 
 #dashboard{
-    /*display: none;*/
+    display: none;
 }
 
 .cardHolder > .card{
@@ -219,7 +219,7 @@ label{
 /**********************************************/
 
 #customer{
-    display: none;
+    /*display: none;*/
 }
 
 .my-btn-group > button:nth-child(1){
