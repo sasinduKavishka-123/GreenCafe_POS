@@ -98,13 +98,13 @@ cusSaveBtn.on('click', ()=>{
             text: "Invalid Name!"
         });
     }
-    else if(!cusContactRegex.test(phone)){
-        Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "Invalid Contact Number!"
-        });
-    }
+    // else if(!cusContactRegex.test(phone)){
+    //     Swal.fire({
+    //         icon: "error",
+    //         title: "Oops...",
+    //         text: "Invalid Contact Number!"
+    //     });
+    // }
     else if(address===""){
         Swal.fire({
             icon: "error",
@@ -141,13 +141,13 @@ cusUpdateBtn.on('click', ()=>{
             text: "Invalid Name!"
         });
     }
-    else if(!cusContactRegex.test(phone)){
-        Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "Invalid Contact Number!"
-        });
-    }
+    // else if(!cusContactRegex.test(phone)){
+    //     Swal.fire({
+    //         icon: "error",
+    //         title: "Oops...",
+    //         text: "Invalid Contact Number!"
+    //     });
+    // }
     else if(address===""){
         Swal.fire({
             icon: "error",
@@ -165,6 +165,13 @@ cusUpdateBtn.on('click', ()=>{
             cusObj.contact = customer.contact;
             cusObj.address = customer.address;
         }
+        else{
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Customer Not Found!"
+            });
+        }
 
         cleanCustomerForm();
         loadCusTable();
@@ -174,7 +181,6 @@ cusUpdateBtn.on('click', ()=>{
             icon: "success"
         });
     }
-
 });
 
 // delete customer
@@ -221,8 +227,8 @@ const loadCusTable = () =>{
 };
 
 // fill data
-cusTableBody.on('click', 'tr', ()=>{
-    let index = $(this).index() + 1;
+cusTableBody.on('click', "tr", function (){
+    let index = $(this).index();
     let customerObj = customersArray[index];
 
     cusIDField.val(customerObj.id);
