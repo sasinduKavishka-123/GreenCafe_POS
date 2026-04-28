@@ -151,7 +151,14 @@ cusUpdateBtn.on('click', ()=>{
     let isInfoValid = checkInfoIsValid(name, phone, address);
     let isInfoDuplicate = checkInfoIsDuplicate(id, name, phone, "U");
 
-    if(!isInfoValid){}
+    if(id === nextCusId){
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Customer ID Doesn't Exists!"
+        });
+    }
+    else if(!isInfoValid){}
     else if(isInfoDuplicate){}
     else{
         let customer = new Customer(id, name, phone, address);
@@ -299,7 +306,7 @@ const checkInfoIsDuplicate = (id, name, phone, status)=>{
             isDuplicate = true;
             break;
         }
-        if(cus.name === name){
+        if(cus.name.toLowerCase() === name.toLowerCase()){
             Swal.fire({
                 icon: "error",
                 title: "Oops...",
