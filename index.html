@@ -260,10 +260,10 @@
             <nav class="navbar bg-body-tertiary">
                 <div class="container-fluid">
                     <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search"
+                        <input class="form-control me-2" id="customer_search_input" type="search" placeholder="Search"
                                aria-label="Search" data-bs-toggle="tooltip" data-bs-placement="top"
                                data-bs-title="Search customer by ID or Name"/>
-                        <button class="btn btn-info" type="submit">Search</button>
+                        <button class="btn btn-info" id="customerSearchBtn" type="button">Search</button>
                     </form>
                 </div>
             </nav>
@@ -278,7 +278,7 @@
                     <th scope="col">Address</th>
                 </tr>
                 </thead>
-                <tbody id="customerTBody" class="table-group-divider">                </tbody>
+                <tbody id="customerTBody" class="table-group-divider"></tbody>
             </table>
 
         </div>

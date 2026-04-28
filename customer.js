@@ -1,25 +1,4 @@
 
-let customersArray = [];
-const cusContactRegex = new RegExp('^\\d{10}$');
-const cusNameRegex = new RegExp('^[a-zA-Z\\s]{4,}$');
-
-// input fields
-let cusIDField = $('#customer_id_input');
-let cusNameField = $('#customer_name_input');
-let cusContactField = $('#customer_phone_input');
-let cusAddressField = $('#customer_address_input');
-
-// buttons
-let cusSaveBtn = $('#customerSaveBtn');
-let cusUpdateBtn = $('#customerUpdateBtn');
-let cusDeleteBtn = $('#customerDeleteBtn');
-let cusResetBtn = $('#customerResetBtn');
-
-let cusTableBody = $('#customerTBody');
-
-// variables
-let nextCusId = "CUS_"+ (customersArray.length+1);
-
 // customer class
 class Customer{
     #id;
@@ -61,7 +40,47 @@ class Customer{
 
 }
 
+let customersArray = [ new Customer("CUS_1", "Kavindu", "0112908765", "Kelaniya"),
+                                 new Customer("CUS_2", "Anjana", "0718967234", "Kadawatha"),
+                                 new Customer("CUS_3", "Perera", "0725644231", "Panadura"),
+                                 new Customer("CUS_4", "Supun", "0713478654", "Boralla"),
+                                 new Customer("CUS_5", "Kelum", "0113675121", "Ampara")];
+
+const cusContactRegex = new RegExp('^\\d{10}$');
+const cusNameRegex = new RegExp('^[a-zA-Z\\s]{4,}$');
+
+// input fields
+let cusIDField = $('#customer_id_input');
+let cusNameField = $('#customer_name_input');
+let cusContactField = $('#customer_phone_input');
+let cusAddressField = $('#customer_address_input');
+let cusSearchField = $('#customer_search_input');
+
+// buttons
+let cusSaveBtn = $('#customerSaveBtn');
+let cusUpdateBtn = $('#customerUpdateBtn');
+let cusDeleteBtn = $('#customerDeleteBtn');
+let cusResetBtn = $('#customerResetBtn');
+let cusSearchBtn = $('#customerSearchBtn');
+
+let cusTableBody = $('#customerTBody');
+
+// variables
+let nextCusId = "CUS_"+ (customersArray.length+1);
+
 cusIDField.val(nextCusId);
+
+// load customer table
+const loadCusTable = () =>{
+    cusTableBody.empty();
+    customersArray.map((cus, index)=>{
+        let dataset = `${cus.id}, ${cus.name}, ${cus.contact}, ${cus.address}`;
+        let newRow = `<tr data-index={dataset}> <td>${cus.id}</td> <td>${cus.name}</td> <td>${cus.contact}</td> <td>${cus.address}</td> </tr>`;
+        cusTableBody.append(newRow);
+    });
+};
+
+loadCusTable();
 
 // reset form
 cusResetBtn.on('click', function (){
@@ -70,6 +89,7 @@ cusResetBtn.on('click', function (){
     cusContactField.val('');
     cusAddressField.val('');
     getNextCusID();
+    loadCusTable();
 });
 
 const cleanCustomerForm = ()=>{
@@ -79,7 +99,14 @@ const cleanCustomerForm = ()=>{
 //get next customer id
 
 const getNextCusID = ()=>{
-    nextCusId = "CUS_"+ (customersArray.length+1);
+    if(customersArray.length === 0){
+        nextCusId = "CUS_1";
+    }
+    else{
+        let lastId = customersArray[customersArray.length-1].id.toString();
+        let num = +lastId.replace("CUS_", "") + 1;
+        nextCusId = "CUS_"+ num;
+    }
     cusIDField.val(nextCusId);
 };
 
@@ -103,7 +130,6 @@ cusSaveBtn.on('click', ()=>{
         let customer = new Customer(id, name, phone, address);
         customersArray.push(customer);
         cleanCustomerForm();
-        loadCusTable();
         Swal.fire({
             title: "Saved!",
             text: "customer Saved Successfully!",
@@ -145,7 +171,6 @@ cusUpdateBtn.on('click', ()=>{
         }
 
         cleanCustomerForm();
-        loadCusTable();
         Swal.fire({
             title: "Saved!",
             text: "customer Updated Successfully!",
@@ -175,7 +200,6 @@ cusDeleteBtn.on('click', ()=>{
             if(index !== -1){
                 customersArray.splice(index, 1);
             }
-            loadCusTable();
             cleanCustomerForm();
 
             Swal.fire({
@@ -186,6 +210,20 @@ cusDeleteBtn.on('click', ()=>{
         }
     });
 
+});
+
+// search customer
+cusSearchBtn.on('click', ()=>{
+    let text = cusSearchField.val().toString();
+    cusTableBody.empty();
+    customersArray.map((cus, index)=>{
+
+        if(cus.id.includes(text)){
+            let dataset = `${cus.id}, ${cus.name}, ${cus.contact}, ${cus.address}`;
+            let newRow = `<tr data-index={dataset}> <td>${cus.id}</td> <td>${cus.name}</td> <td>${cus.contact}</td> <td>${cus.address}</td> </tr>`;
+            cusTableBody.append(newRow);
+        }
+    });
 });
 
 // check info is valid
@@ -260,16 +298,6 @@ const checkInfoIsDuplicate = (id, name, phone, status)=>{
     return isDuplicate;
 };
 
-
-// load customer table
-const loadCusTable = () =>{
-    cusTableBody.empty();
-    customersArray.map((cus, index)=>{
-        let dataset = `${cus.id}, ${cus.name}, ${cus.contact}, ${cus.address}`;
-        let newRow = `<tr data-index={dataset}> <td>${cus.id}</td> <td>${cus.name}</td> <td>${cus.contact}</td> <td>${cus.address}</td> </tr>`;
-        cusTableBody.append(newRow);
-    });
-};
 
 // fill data
 cusTableBody.on('click', "tr", function (){
