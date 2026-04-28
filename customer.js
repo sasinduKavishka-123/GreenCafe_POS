@@ -1,7 +1,7 @@
 
 let customersArray = [];
 const cusContactRegex = new RegExp('^\\d{10}$');
-const cusNameRegex = new RegExp('^[a-zA-Z]{4,}$');
+const cusNameRegex = new RegExp('^[a-zA-Z\\s]{4,}$');
 
 // input fields
 let cusIDField = $('#customer_id_input');
@@ -91,28 +91,15 @@ cusSaveBtn.on('click', ()=>{
     let phone = cusContactField.val();
     let address = cusAddressField.val();
 
-    if(!cusNameRegex.test(name)){
-        Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "Invalid Name!"
-        });
-    }
-    // else if(!cusContactRegex.test(phone)){
-    //     Swal.fire({
-    //         icon: "error",
-    //         title: "Oops...",
-    //         text: "Invalid Contact Number!"
-    //     });
-    // }
-    else if(address===""){
-        Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "Invalid Address!"
-        });
+    let isInfoValid = checkInfoIsValid(name, phone, address);
+    let isInfoDuplicate = checkInfoIsDuplicate(id, name, phone, "S");
+
+    if(!isInfoValid){}
+    else if(isInfoDuplicate){
+        console.log(isInfoDuplicate);
     }
     else{
+        console.log(isInfoDuplicate);
         let customer = new Customer(id, name, phone, address);
         customersArray.push(customer);
         cleanCustomerForm();
@@ -134,27 +121,11 @@ cusUpdateBtn.on('click', ()=>{
     let phone = cusContactField.val();
     let address = cusAddressField.val();
 
-    if(!cusNameRegex.test(name)){
-        Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "Invalid Name!"
-        });
-    }
-    // else if(!cusContactRegex.test(phone)){
-    //     Swal.fire({
-    //         icon: "error",
-    //         title: "Oops...",
-    //         text: "Invalid Contact Number!"
-    //     });
-    // }
-    else if(address===""){
-        Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "Invalid Address!"
-        });
-    }
+    let isInfoValid = checkInfoIsValid(name, phone, address);
+    let isInfoDuplicate = checkInfoIsDuplicate(id, name, phone, "U");
+
+    if(!isInfoValid){}
+    else if(isInfoDuplicate){}
     else{
         let customer = new Customer(id, name, phone, address);
 
@@ -181,6 +152,7 @@ cusUpdateBtn.on('click', ()=>{
             icon: "success"
         });
     }
+
 });
 
 // delete customer
@@ -215,6 +187,79 @@ cusDeleteBtn.on('click', ()=>{
     });
 
 });
+
+// check info is valid
+const checkInfoIsValid = (name, phone, address) =>{
+
+    if(!cusNameRegex.test(name)){
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Invalid Name!"
+        });
+        return false;
+    }
+    else if(!cusContactRegex.test(phone)){
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Invalid Contact Number!"
+        });
+        return false;
+    }
+    else if(address===""){
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Invalid Address!"
+        });
+        return false;
+    }
+
+    return true;
+};
+
+// check info is duplicate
+const checkInfoIsDuplicate = (id, name, phone, status)=>{
+    let isDuplicate = false;
+    for(const cus of customersArray){
+
+        if((cus.id === id) && (status === "U")){
+            continue;
+        }
+
+        if(cus.id === id){
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Customer ID Already Exists!"
+            });
+            isDuplicate = true;
+            break;
+        }
+        if(cus.name === name){
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Customer Name Already Exists!"
+            });
+            isDuplicate = true;
+            break;
+        }
+        if(cus.contact === phone){
+            console.log('ddddddd');
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Customer Contact Already Exists!"
+            });
+            isDuplicate = true;
+            break;
+        }
+    }
+    return isDuplicate;
+};
+
 
 // load customer table
 const loadCusTable = () =>{
