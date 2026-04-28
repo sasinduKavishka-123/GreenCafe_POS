@@ -88,6 +88,7 @@ cusResetBtn.on('click', function (){
     cusNameField.val('');
     cusContactField.val('');
     cusAddressField.val('');
+    cusSearchField.val('');
     getNextCusID();
     loadCusTable();
 });
@@ -216,14 +217,37 @@ cusDeleteBtn.on('click', ()=>{
 cusSearchBtn.on('click', ()=>{
     let text = cusSearchField.val().toString();
     cusTableBody.empty();
-    customersArray.map((cus, index)=>{
+    let noCustomers = true;
 
-        if(cus.id.includes(text)){
-            let dataset = `${cus.id}, ${cus.name}, ${cus.contact}, ${cus.address}`;
-            let newRow = `<tr data-index={dataset}> <td>${cus.id}</td> <td>${cus.name}</td> <td>${cus.contact}</td> <td>${cus.address}</td> </tr>`;
-            cusTableBody.append(newRow);
-        }
-    });
+    if(text.startsWith("CUS_")){
+        customersArray.map((cus, index)=>{
+            if(cus.id.includes(text)){
+                let dataset = `${cus.id}, ${cus.name}, ${cus.contact}, ${cus.address}`;
+                let newRow = `<tr data-index={dataset}> <td>${cus.id}</td> <td>${cus.name}</td> <td>${cus.contact}</td> <td>${cus.address}</td> </tr>`;
+                cusTableBody.append(newRow);
+                noCustomers = false;
+            }
+        });
+    }
+    else{
+        customersArray.map((cus, index)=>{
+            if(cus.name.toLowerCase().includes(text.toLowerCase())){
+                let dataset = `${cus.id}, ${cus.name}, ${cus.contact}, ${cus.address}`;
+                let newRow = `<tr data-index={dataset}> <td>${cus.id}</td> <td>${cus.name}</td> <td>${cus.contact}</td> <td>${cus.address}</td> </tr>`;
+                cusTableBody.append(newRow);
+                noCustomers = false;
+            }
+        });
+    }
+
+    if(noCustomers){
+        Swal.fire({
+            title: "Oops...",
+            text: "Customer Not Found!",
+            icon: "warning"
+        });
+    }
+
 });
 
 // check info is valid
