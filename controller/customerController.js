@@ -2,18 +2,15 @@
 import {addCustomerData, updateCustomerData, deleteCustomerData, getCustomerData} from "../model/customerModel.js";
 import {checkCusName, checkCusContact} from "../utils/regexUtils.js";
 
-let cusTableArray = [];
 
-
-
-// input fields
+// ------------ input fields ------------
 let cusIDField = $('#customer_id_input');
 let cusNameField = $('#customer_name_input');
 let cusContactField = $('#customer_phone_input');
 let cusAddressField = $('#customer_address_input');
 let cusSearchField = $('#customer_search_input');
 
-// buttons
+// ------------ buttons ------------
 let cusSaveBtn = $('#customerSaveBtn');
 let cusUpdateBtn = $('#customerUpdateBtn');
 let cusDeleteBtn = $('#customerDeleteBtn');
@@ -22,12 +19,14 @@ let cusSearchBtn = $('#customerSearchBtn');
 
 let cusTableBody = $('#customerTBody');
 
-// variables
-let nextCusId = "CUS_"+ (getCustomerData().length+1);
+// ------------ variables ------------
+let nextCusId = "";
+let cusTableArray = [];
+
 
 cusIDField.val(nextCusId);
 
-// load customer table
+// ------------ load customer table ------------
 const loadCusTable = () =>{
     cusTableBody.empty();
     cusTableArray = getCustomerData();
@@ -38,9 +37,27 @@ const loadCusTable = () =>{
     });
 };
 
+
+// ------------ get next customer id ----------------------
+const getNextCusID = ()=>{
+    if(getCustomerData().length === 0){
+        nextCusId = "CUS_1";
+    }
+    else{
+        let lastId = getCustomerData()[getCustomerData().length-1].id.toString();
+        let num = +lastId.replace("CUS_", "") + 1;
+        nextCusId = "CUS_"+ num;
+    }
+    cusIDField.val(nextCusId);
+};
+
+
+// -------------- initialization ------------------------
+getNextCusID();
 loadCusTable();
 
-// reset form
+
+// ------------ reset form ----------------------
 cusResetBtn.on('click', function (){
     cusIDField.val(nextCusId);
     cusNameField.val('');
@@ -55,21 +72,8 @@ const cleanCustomerForm = ()=>{
   cusResetBtn.click();
 };
 
-//get next customer id
 
-const getNextCusID = ()=>{
-    if(getCustomerData().length === 0){
-        nextCusId = "CUS_1";
-    }
-    else{
-        let lastId = getCustomerData()[getCustomerData().length-1].id.toString();
-        let num = +lastId.replace("CUS_", "") + 1;
-        nextCusId = "CUS_"+ num;
-    }
-    cusIDField.val(nextCusId);
-};
-
-// save customer
+// ----------- save customer ----------------------
 cusSaveBtn.on('click', ()=>{
 
     let id = cusIDField.val();
@@ -94,7 +98,8 @@ cusSaveBtn.on('click', ()=>{
 
 });
 
-// update customer
+
+// ----------- update customer ----------------------
 cusUpdateBtn.on('click', ()=>{
 
     let id = cusIDField.val();
@@ -136,7 +141,8 @@ cusUpdateBtn.on('click', ()=>{
     }
 });
 
-// delete customer
+
+// ----------- delete customer ----------------------
 cusDeleteBtn.on('click', ()=>{
     let id = cusIDField.val();
 
@@ -165,7 +171,8 @@ cusDeleteBtn.on('click', ()=>{
 
 });
 
-// search customer
+
+// ----------- search customer ----------------------
 cusSearchBtn.on('click', ()=>{
     let text = cusSearchField.val().toString();
     cusTableBody.empty();
@@ -203,7 +210,8 @@ cusSearchBtn.on('click', ()=>{
 
 });
 
-// check info is valid
+
+// ----------- check info is valid ----------------------
 const checkInfoIsValid = (name, phone, address) =>{
 
     if(!checkCusName(name)){
@@ -234,7 +242,8 @@ const checkInfoIsValid = (name, phone, address) =>{
     return true;
 };
 
-// check info is duplicate
+
+// ----------- check info is duplicate ------------------
 const checkInfoIsDuplicate = (id, name, phone, status)=>{
     let isDuplicate = false;
     for(const cus of getCustomerData()){
@@ -275,7 +284,7 @@ const checkInfoIsDuplicate = (id, name, phone, status)=>{
 };
 
 
-// fill data
+// ----------- fill data ---------------------------------
 cusTableBody.on('click', "tr", function (){
     let index = $(this).index();
     let customerObj = cusTableArray[index];
