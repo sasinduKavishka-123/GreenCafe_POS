@@ -1,9 +1,10 @@
 
 import {addCustomerData, updateCustomerData, deleteCustomerData, getCustomerData} from "../model/customerModel.js";
+import {checkCusName, checkCusContact} from "../utils/regexUtils.js";
 
 let cusTableArray = [];
-const cusContactRegex = new RegExp('^\\d{10}$');
-const cusNameRegex = new RegExp('^[a-zA-Z\\s]{4,}$');
+
+
 
 // input fields
 let cusIDField = $('#customer_id_input');
@@ -205,7 +206,7 @@ cusSearchBtn.on('click', ()=>{
 // check info is valid
 const checkInfoIsValid = (name, phone, address) =>{
 
-    if(!cusNameRegex.test(name)){
+    if(!checkCusName(name)){
         Swal.fire({
             icon: "error",
             title: "Oops...",
@@ -213,7 +214,7 @@ const checkInfoIsValid = (name, phone, address) =>{
         });
         return false;
     }
-    else if(!cusContactRegex.test(phone)){
+    else if(!checkCusContact(phone)){
         Swal.fire({
             icon: "error",
             title: "Oops...",
