@@ -160,7 +160,7 @@ cusDeleteBtn.on('click', ()=>{
             cleanCustomerForm();
 
             Swal.fire({
-                title: "Deleted!",
+                title: "Done!",
                 text: "Customer Deleted Successfully!",
                 icon: "success"
             });

@@ -2,6 +2,7 @@
 import {addItemData, updateItemData, deleteItemData, getItemData} from "../model/itemModel.js";
 import {checkItemName, checkItemPrice, checkItemStock} from "../utils/regexUtils.js";
 
+
 // ------------ input fields ------------
 let itemIDField     = $('#item_id_input');
 let itemNameField   = $('#item_name_input');
@@ -84,7 +85,8 @@ itemSaveBtn.on('click', ()=>{
     if(!isInfoValid){}
     else if(isInfoDuplicate){}
     else{
-        addItemData(id, name, unitPrice, stock);
+        let priceNum = +unitPrice;
+        addItemData(id, name, ("RS. " + priceNum.toFixed(2)), stock);
         clearItemForm();
         Swal.fire({
             title: "Done!",
@@ -167,6 +169,36 @@ const checkInfoIsValid = (name, unitPrice, stock) =>{
 
     return true;
 };
+
+
+// ----------- delete customer ----------------------
+itemDeleteBtn.on('click', ()=>{
+    let id = itemIDField.val();
+
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+
+        if (result.isConfirmed){
+
+            deleteItemData(id);
+            clearItemForm();
+
+            Swal.fire({
+                title: "Done!",
+                text: "Item Deleted Successfully!",
+                icon: "success"
+            });
+        }
+    });
+
+});
 
 
 // ----------- check info is duplicate ------------------

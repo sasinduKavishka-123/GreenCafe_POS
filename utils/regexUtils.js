@@ -15,7 +15,7 @@ const checkCusContact = (contact)=>{
 // -------- item regex ----------------------
 const itemNameRegex = new RegExp('^.{4,}$');
 const itemPriceRegex = new RegExp('^\\d+(\\.\\d{1,2})?$');
-const itemStockRegex = new RegExp('^\\d+$');
+const itemWholeNumberRegex = new RegExp('^\\d+$');
 
 const checkItemName = (name)=>{
     return itemNameRegex.test(name);
@@ -26,7 +26,7 @@ const checkItemPrice = (price)=>{
 };
 
 const checkItemStock = (stock)=>{
-    return itemStockRegex.test(stock);
+    return itemWholeNumberRegex.test(stock);
 };
 
 export {checkCusName, checkCusContact, checkItemName, checkItemPrice, checkItemStock};

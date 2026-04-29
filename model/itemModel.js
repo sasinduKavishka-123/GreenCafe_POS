@@ -44,7 +44,7 @@ class Item{
 
 // --------- save item ---------------
 const addItemData = (id, name, unitPrice, stock) =>{
-      itemsArray.push(new Item(id, name, +unitPrice, +stock));
+      itemsArray.push(new Item(id, name, unitPrice, stock));
 };
 
 
