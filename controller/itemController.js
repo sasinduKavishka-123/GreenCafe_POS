@@ -1,0 +1,213 @@
+
+import {addItemData, updateItemData, deleteItemData, getItemData} from "../model/itemModel.js";
+import {checkItemName, checkItemPrice, checkItemStock} from "../utils/regexUtils.js";
+
+// ------------ input fields ------------
+let itemIDField     = $('#item_id_input');
+let itemNameField   = $('#item_name_input');
+let itemPriceField  = $('#item_price_input');
+let itemStockField  = $('#item_stock_input');
+let itemSearchField = $('#item_search_input');
+
+// ------------ buttons ------------
+let itemSaveBtn      = $('#itemSaveBtn');
+let itemUpdateBtn    = $('#itemUpdateBtn');
+let itemDeleteBtn    = $('#itemDeleteBtn');
+let itemResetBtn     = $('#itemResetBtn');
+let itemSearchBtn    = $('#itemSearchBtn');
+
+let itemTblBody = $('#itemTBody');
+
+// ------------ variables ------------
+let nextItemId = "";
+let itemTableArray = [];
+
+
+// ------------ load item table ------------
+const loadItemTable = () =>{
+    itemTblBody.empty();
+    itemTableArray = getItemData();
+    itemTableArray.map((item, index)=>{
+        let dataset = `${item.id}, ${item.name}, ${item.unitPrice}, ${item.stock}`;
+        let newRow = `<tr data-index={dataset}> <td>${item.id}</td> <td>${item.name}</td> <td>${item.unitPrice}</td> <td>${item.stock}</td> </tr>`;
+        itemTblBody.append(newRow);
+    });
+};
+
+
+// ------------ get next item id ----------------------
+const getNextItemID = ()=>{
+    if(getItemData().length === 0){
+        nextItemId = "ITEM_1";
+    }
+    else{
+        let lastId = getItemData()[getItemData().length-1].id;
+        let num = +lastId.toString().replace("ITEM_", "") + 1;
+        nextItemId = "ITEM_"+ num;
+    }
+    $('#item_id_input').val(nextItemId);
+};
+
+
+// -------------- initialization ------------------------
+getNextItemID();
+loadItemTable();
+
+
+// ------------ reset form ----------------------
+itemResetBtn.on('click', ()=> {
+    clearItemForm();
+});
+
+const clearItemForm = ()=>{
+    itemIDField.val('');
+    itemNameField.val('');
+    itemPriceField.val('');
+    itemStockField.val('');
+    itemSearchField.val('');
+    getNextItemID();
+    loadItemTable();
+};
+
+
+// ----------- save item ----------------------
+itemSaveBtn.on('click', ()=>{
+
+    let id       = itemIDField.val();
+    let name     = itemNameField.val();
+    let unitPrice= itemPriceField.val();
+    let stock    = itemStockField.val();
+
+    let isInfoValid = checkInfoIsValid(name, unitPrice, stock);
+    let isInfoDuplicate = checkInfoIsDuplicate(id, name, "S");
+
+    if(!isInfoValid){}
+    else if(isInfoDuplicate){}
+    else{
+        addItemData(id, name, unitPrice, stock);
+        clearItemForm();
+        Swal.fire({
+            title: "Done!",
+            text: "Item Saved Successfully!",
+            icon: "success"
+        });
+    }
+});
+
+
+// ----------- update item ----------------------
+itemUpdateBtn.on('click', ()=>{
+    let id      = itemIDField.val();
+    let name    = itemNameField.val();
+    let price   = itemPriceField.val();
+    let stock = itemStockField.val();
+
+    let isInfoValid = checkInfoIsValid(name, price, stock);
+    let isInfoDuplicate = checkInfoIsDuplicate(id, name, "U");
+
+    if(id === nextItemId){
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Item ID Doesn't Exists!"
+        });
+    }
+    else if(!isInfoValid){}
+    else if(isInfoDuplicate){}
+    else{
+
+        let isUpdated = updateItemData(id, name, price, stock);
+
+        if(isUpdated){
+            clearItemForm();
+            Swal.fire({
+                title: "Done!",
+                text: "Item Updated Successfully!",
+                icon: "success"
+            });
+        }
+        else{
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Item Not Found!"
+            });
+        }
+    }
+});
+
+
+// ----------- check info is valid ----------------------
+const checkInfoIsValid = (name, unitPrice, stock) =>{
+
+    if(!checkItemName(name)){
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Invalid Name!"
+        });
+        return false;
+    }
+    else if(!checkItemPrice(unitPrice)){
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Invalid Unit Price!"
+        });
+        return false;
+    }
+    else if(!checkItemStock(stock)){
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Invalid Stock Number!"
+        });
+        return false;
+    }
+
+    return true;
+};
+
+
+// ----------- check info is duplicate ------------------
+const checkInfoIsDuplicate = (id, name, status)=>{
+    let isDuplicate = false;
+    for(const item of getItemData()){
+
+        if((item.id === id) && (status === "U")){
+            continue;
+        }
+
+        if(item.id === id){
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Item ID Already Exists!"
+            });
+            isDuplicate = true;
+            break;
+        }
+        if(item.name.toLowerCase() === name.toLowerCase()){
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Item Name Already Exists!"
+            });
+            isDuplicate = true;
+            break;
+        }
+    }
+    return isDuplicate;
+};
+
+
+// ----------- fill data ---------------------------------
+itemTblBody.on('click', "tr", function (){
+    let index = $(this).index();
+    let itemObj = itemTableArray[index];
+
+    itemIDField.val(itemObj.id);
+    itemNameField.val(itemObj.name);
+    itemPriceField.val(itemObj.unitPrice);
+    itemStockField.val(itemObj.stock);
+});

@@ -1,6 +1,7 @@
+
 import{customersArray} from "../db/db.js";
 
-// customer class
+// --------- customer class ---------
 class Customer{
     #id;
     #name;
@@ -48,7 +49,6 @@ const addCustomerData = (id, name, contact, address)=>{
 
 
 // --------- update customer ---------------
-
 const updateCustomerData = (id, name, contact, address)=>{
     let cusObj = customersArray.find(cus => cus.id === id);
 

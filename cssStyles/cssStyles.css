@@ -219,7 +219,7 @@ label{
 /**********************************************/
 
 #customer{
-    /*display: none;*/
+    display: none;
 }
 
 .my-btn-group > button:nth-child(1){
@@ -262,7 +262,7 @@ label{
 /**********************************************/
 
 #item{
-    display: none;
+    /*display: none;*/
 }
 
 

@@ -11,4 +11,22 @@ const checkCusContact = (contact)=>{
     return cusContactRegex.test(contact);
 };
 
-export {checkCusName, checkCusContact};
+
+// -------- item regex ----------------------
+const itemNameRegex = new RegExp('^.{4,}$');
+const itemPriceRegex = new RegExp('^\\d+(\\.\\d{1,2})?$');
+const itemStockRegex = new RegExp('^\\d+$');
+
+const checkItemName = (name)=>{
+    return itemNameRegex.test(name);
+};
+
+const checkItemPrice = (price)=>{
+    return itemPriceRegex.test(price);
+};
+
+const checkItemStock = (stock)=>{
+    return itemStockRegex.test(stock);
+};
+
+export {checkCusName, checkCusContact, checkItemName, checkItemPrice, checkItemStock};

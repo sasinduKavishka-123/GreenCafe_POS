@@ -4,18 +4,18 @@ import {checkCusName, checkCusContact} from "../utils/regexUtils.js";
 
 
 // ------------ input fields ------------
-let cusIDField = $('#customer_id_input');
-let cusNameField = $('#customer_name_input');
+let cusIDField      = $('#customer_id_input');
+let cusNameField    = $('#customer_name_input');
 let cusContactField = $('#customer_phone_input');
 let cusAddressField = $('#customer_address_input');
-let cusSearchField = $('#customer_search_input');
+let cusSearchField  = $('#customer_search_input');
 
 // ------------ buttons ------------
-let cusSaveBtn = $('#customerSaveBtn');
-let cusUpdateBtn = $('#customerUpdateBtn');
-let cusDeleteBtn = $('#customerDeleteBtn');
-let cusResetBtn = $('#customerResetBtn');
-let cusSearchBtn = $('#customerSearchBtn');
+let cusSaveBtn      = $('#customerSaveBtn');
+let cusUpdateBtn    = $('#customerUpdateBtn');
+let cusDeleteBtn    = $('#customerDeleteBtn');
+let cusResetBtn     = $('#customerResetBtn');
+let cusSearchBtn    = $('#customerSearchBtn');
 
 let cusTableBody = $('#customerTBody');
 
@@ -23,8 +23,6 @@ let cusTableBody = $('#customerTBody');
 let nextCusId = "";
 let cusTableArray = [];
 
-
-cusIDField.val(nextCusId);
 
 // ------------ load customer table ------------
 const loadCusTable = () =>{
@@ -59,7 +57,7 @@ loadCusTable();
 
 // ------------ reset form ----------------------
 cusResetBtn.on('click', function (){
-    cusIDField.val(nextCusId);
+    cusIDField.val('');
     cusNameField.val('');
     cusContactField.val('');
     cusAddressField.val('');
@@ -91,7 +89,7 @@ cusSaveBtn.on('click', ()=>{
         cleanCustomerForm();
         Swal.fire({
             title: "Done!",
-            text: "customer Saved Successfully!",
+            text: "Customer Saved Successfully!",
             icon: "success"
         });
     }

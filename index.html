@@ -301,7 +301,7 @@
             </div>
             <div class="col-md-6">
                 <label for="item_price_input" class="form-label">Unit Price</label>
-                <input type="text" class="form-control" id="item_price_input">
+                <input type="number" min="0" class="form-control" id="item_price_input">
             </div>
             <div class="col-md-6">
                 <label for="item_stock_input" class="form-label">Stock</label>
@@ -311,7 +311,7 @@
                 <button type="button" id="itemSaveBtn" class="btn btn-success">Save</button>
                 <button type="button" id="itemUpdateBtn" class="btn btn-warning">Update</button>
                 <button type="button" id="itemDeleteBtn" class="btn btn-danger">Delete</button>
-                <button type="reset" id="itemResetBtn" class="btn btn-info">Reset</button>
+                <button type="button" id="itemResetBtn" class="btn btn-info">Reset</button>
             </div>
         </form>
 
@@ -321,14 +321,13 @@
             <nav class="navbar bg-body-tertiary">
                 <div class="container-fluid">
                     <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search"
+                        <input class="form-control me-2" id="item_search_input" type="search" placeholder="Search"
                                aria-label="Search" data-bs-toggle="tooltip" data-bs-placement="top"
                                data-bs-title="Search item by ID or Name"/>
-                        <button class="btn btn-info" type="submit">Search</button>
+                        <button class="btn btn-info" id="itemSearchBtn" type="button">Search</button>
                     </form>
                 </div>
             </nav>
-
 
             <table class="table table-hover  m-1" id="itemTable">
                 <thead>
@@ -339,26 +338,7 @@
                     <th scope="col">Stock</th>
                 </tr>
                 </thead>
-                <tbody id="itemTBody" class="table-group-divider">
-                <tr>
-                    <th>1</th>
-                    <td>Tea</td>
-                    <td>30</td>
-                    <td>10</td>
-                </tr>
-                <tr>
-                    <th>2</th>
-                    <td>Coffee</td>
-                    <td>30</td>
-                    <td>100</td>
-                </tr>
-                <tr>
-                    <th>3</th>
-                    <td>Toffee</td>
-                    <td>20</td>
-                    <td>50</td>
-                </tr>
-                </tbody>
+                <tbody id="itemTBody" class="table-group-divider"></tbody>
             </table>
 
         </div>
@@ -491,11 +471,19 @@
 <!-- jQuery -->
 <script src="assets/lib/jquery-4.0.0.min.js"></script>
 
-<!-- navigation -->
+<!-- dashboard controller -->
 <script src="controller/dashboardController.js"></script>
 
-<!-- customer management -->
+<!-- customer controller -->
 <script type="module" src="controller/customerController.js"></script>
+
+<!-- item controller -->
+<script type="module" src="controller/itemController.js"></script>
+
+<!-- pos controller -->
+
+
+<!-- order controller -->
 
 </body>
 </html>
