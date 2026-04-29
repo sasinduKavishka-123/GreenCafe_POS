@@ -1,50 +1,6 @@
 
-// customer class
-class Customer{
-    #id;
-    #name;
-    #contact;
-    #address;
-    constructor(id, name, contact, address) {
-        this.#id = id;
-        this.#name = name;
-        this.#contact = contact;
-        this.#address = address;
-    }
+import {addCustomerData, updateCustomerData, deleteCustomerData, getCustomerData} from "../model/customerModel.js";
 
-    get id(){
-        return this.#id;
-    }
-    get name(){
-        return this.#name;
-    }
-    get contact(){
-        return this.#contact;
-    }
-    get address(){
-        return this.#address;
-    }
-
-    set id(id){
-        this.#id = id;
-    }
-    set name(name){
-        this.#name = name;
-    }
-    set contact(contact){
-        this.#contact = contact;
-    }
-    set address(address){
-        this.#address = address;
-    }
-
-}
-
-let customersArray = [ new Customer("CUS_1", "Kavindu", "0112908765", "Kelaniya"),
-                                 new Customer("CUS_2", "Anjana", "0718967234", "Kadawatha"),
-                                 new Customer("CUS_3", "Perera", "0725644231", "Panadura"),
-                                 new Customer("CUS_4", "Supun", "0713478654", "Boralla"),
-                                 new Customer("CUS_5", "Kelum", "0113675121", "Ampara")];
 let cusTableArray = [];
 const cusContactRegex = new RegExp('^\\d{10}$');
 const cusNameRegex = new RegExp('^[a-zA-Z\\s]{4,}$');
@@ -66,14 +22,14 @@ let cusSearchBtn = $('#customerSearchBtn');
 let cusTableBody = $('#customerTBody');
 
 // variables
-let nextCusId = "CUS_"+ (customersArray.length+1);
+let nextCusId = "CUS_"+ (getCustomerData().length+1);
 
 cusIDField.val(nextCusId);
 
 // load customer table
 const loadCusTable = () =>{
     cusTableBody.empty();
-    cusTableArray = customersArray;
+    cusTableArray = getCustomerData();
     cusTableArray.map((cus, index)=>{
         let dataset = `${cus.id}, ${cus.name}, ${cus.contact}, ${cus.address}`;
         let newRow = `<tr data-index={dataset}> <td>${cus.id}</td> <td>${cus.name}</td> <td>${cus.contact}</td> <td>${cus.address}</td> </tr>`;
@@ -101,11 +57,11 @@ const cleanCustomerForm = ()=>{
 //get next customer id
 
 const getNextCusID = ()=>{
-    if(customersArray.length === 0){
+    if(getCustomerData().length === 0){
         nextCusId = "CUS_1";
     }
     else{
-        let lastId = customersArray[customersArray.length-1].id.toString();
+        let lastId = getCustomerData()[getCustomerData().length-1].id.toString();
         let num = +lastId.replace("CUS_", "") + 1;
         nextCusId = "CUS_"+ num;
     }
@@ -124,16 +80,12 @@ cusSaveBtn.on('click', ()=>{
     let isInfoDuplicate = checkInfoIsDuplicate(id, name, phone, "S");
 
     if(!isInfoValid){}
-    else if(isInfoDuplicate){
-        console.log(isInfoDuplicate);
-    }
+    else if(isInfoDuplicate){}
     else{
-        console.log(isInfoDuplicate);
-        let customer = new Customer(id, name, phone, address);
-        customersArray.push(customer);
+        addCustomerData(id, name, phone, address);
         cleanCustomerForm();
         Swal.fire({
-            title: "Saved!",
+            title: "Done!",
             text: "customer Saved Successfully!",
             icon: "success"
         });
@@ -162,14 +114,16 @@ cusUpdateBtn.on('click', ()=>{
     else if(!isInfoValid){}
     else if(isInfoDuplicate){}
     else{
-        let customer = new Customer(id, name, phone, address);
 
-        let cusObj = customersArray.find(cus => cus.id === id);
+        let isUpdated = updateCustomerData(id, name, phone, address);
 
-        if(cusObj){
-            cusObj.name = customer.name;
-            cusObj.contact = customer.contact;
-            cusObj.address = customer.address;
+        if(isUpdated){
+            cleanCustomerForm();
+            Swal.fire({
+                title: "Done!",
+                text: "Customer Updated Successfully!",
+                icon: "success"
+            });
         }
         else{
             Swal.fire({
@@ -178,15 +132,7 @@ cusUpdateBtn.on('click', ()=>{
                 text: "Customer Not Found!"
             });
         }
-
-        cleanCustomerForm();
-        Swal.fire({
-            title: "Saved!",
-            text: "customer Updated Successfully!",
-            icon: "success"
-        });
     }
-
 });
 
 // delete customer
@@ -205,10 +151,7 @@ cusDeleteBtn.on('click', ()=>{
 
         if (result.isConfirmed){
 
-            let index = customersArray.findIndex(cus => cus.id === id);
-            if(index !== -1){
-                customersArray.splice(index, 1);
-            }
+            deleteCustomerData(id);
             cleanCustomerForm();
 
             Swal.fire({
@@ -226,27 +169,25 @@ cusSearchBtn.on('click', ()=>{
     let text = cusSearchField.val().toString();
     cusTableBody.empty();
     cusTableArray = [];
-    // let noCustomers = true;
+    let cusArray = getCustomerData();
 
     if(text.startsWith("CUS_")){
-        customersArray.map((cus, index)=>{
+        cusArray.map((cus, index)=>{
             if(cus.id.includes(text)){
                 cusTableArray.push(cus);
                 let dataset = `${cus.id}, ${cus.name}, ${cus.contact}, ${cus.address}`;
                 let newRow = `<tr data-index={dataset}> <td>${cus.id}</td> <td>${cus.name}</td> <td>${cus.contact}</td> <td>${cus.address}</td> </tr>`;
                 cusTableBody.append(newRow);
-                // noCustomers = false;
             }
         });
     }
     else{
-        customersArray.map((cus, index)=>{
+        cusArray.map((cus, index)=>{
             if(cus.name.toLowerCase().includes(text.toLowerCase())){
                 cusTableArray.push(cus);
                 let dataset = `${cus.id}, ${cus.name}, ${cus.contact}, ${cus.address}`;
                 let newRow = `<tr data-index={dataset}> <td>${cus.id}</td> <td>${cus.name}</td> <td>${cus.contact}</td> <td>${cus.address}</td> </tr>`;
                 cusTableBody.append(newRow);
-                // noCustomers = false;
             }
         });
     }
@@ -295,7 +236,7 @@ const checkInfoIsValid = (name, phone, address) =>{
 // check info is duplicate
 const checkInfoIsDuplicate = (id, name, phone, status)=>{
     let isDuplicate = false;
-    for(const cus of customersArray){
+    for(const cus of getCustomerData()){
 
         if((cus.id === id) && (status === "U")){
             continue;
@@ -320,7 +261,6 @@ const checkInfoIsDuplicate = (id, name, phone, status)=>{
             break;
         }
         if(cus.contact === phone){
-            console.log('ddddddd');
             Swal.fire({
                 icon: "error",
                 title: "Oops...",
