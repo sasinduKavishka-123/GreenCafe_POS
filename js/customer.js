@@ -45,7 +45,7 @@ let customersArray = [ new Customer("CUS_1", "Kavindu", "0112908765", "Kelaniya"
                                  new Customer("CUS_3", "Perera", "0725644231", "Panadura"),
                                  new Customer("CUS_4", "Supun", "0713478654", "Boralla"),
                                  new Customer("CUS_5", "Kelum", "0113675121", "Ampara")];
-
+let cusTableArray = [];
 const cusContactRegex = new RegExp('^\\d{10}$');
 const cusNameRegex = new RegExp('^[a-zA-Z\\s]{4,}$');
 
@@ -73,7 +73,8 @@ cusIDField.val(nextCusId);
 // load customer table
 const loadCusTable = () =>{
     cusTableBody.empty();
-    customersArray.map((cus, index)=>{
+    cusTableArray = customersArray;
+    cusTableArray.map((cus, index)=>{
         let dataset = `${cus.id}, ${cus.name}, ${cus.contact}, ${cus.address}`;
         let newRow = `<tr data-index={dataset}> <td>${cus.id}</td> <td>${cus.name}</td> <td>${cus.contact}</td> <td>${cus.address}</td> </tr>`;
         cusTableBody.append(newRow);
@@ -224,30 +225,33 @@ cusDeleteBtn.on('click', ()=>{
 cusSearchBtn.on('click', ()=>{
     let text = cusSearchField.val().toString();
     cusTableBody.empty();
-    let noCustomers = true;
+    cusTableArray = [];
+    // let noCustomers = true;
 
     if(text.startsWith("CUS_")){
         customersArray.map((cus, index)=>{
             if(cus.id.includes(text)){
+                cusTableArray.push(cus);
                 let dataset = `${cus.id}, ${cus.name}, ${cus.contact}, ${cus.address}`;
                 let newRow = `<tr data-index={dataset}> <td>${cus.id}</td> <td>${cus.name}</td> <td>${cus.contact}</td> <td>${cus.address}</td> </tr>`;
                 cusTableBody.append(newRow);
-                noCustomers = false;
+                // noCustomers = false;
             }
         });
     }
     else{
         customersArray.map((cus, index)=>{
             if(cus.name.toLowerCase().includes(text.toLowerCase())){
+                cusTableArray.push(cus);
                 let dataset = `${cus.id}, ${cus.name}, ${cus.contact}, ${cus.address}`;
                 let newRow = `<tr data-index={dataset}> <td>${cus.id}</td> <td>${cus.name}</td> <td>${cus.contact}</td> <td>${cus.address}</td> </tr>`;
                 cusTableBody.append(newRow);
-                noCustomers = false;
+                // noCustomers = false;
             }
         });
     }
 
-    if(noCustomers){
+    if(cusTableArray.length === 0){
         Swal.fire({
             title: "Oops...",
             text: "Customer Not Found!",
@@ -333,7 +337,7 @@ const checkInfoIsDuplicate = (id, name, phone, status)=>{
 // fill data
 cusTableBody.on('click', "tr", function (){
     let index = $(this).index();
-    let customerObj = customersArray[index];
+    let customerObj = cusTableArray[index];
 
     cusIDField.val(customerObj.id);
     cusNameField.val(customerObj.name);
