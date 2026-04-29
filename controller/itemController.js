@@ -117,8 +117,8 @@ itemUpdateBtn.on('click', ()=>{
     else if(!isInfoValid){}
     else if(isInfoDuplicate){}
     else{
-
-        let isUpdated = updateItemData(id, name, price, stock);
+        let priceNum = +price;
+        let isUpdated = updateItemData(id, name, ("RS. " + priceNum.toFixed(2)), stock);
 
         if(isUpdated){
             clearItemForm();
@@ -240,6 +240,9 @@ itemTblBody.on('click', "tr", function (){
 
     itemIDField.val(itemObj.id);
     itemNameField.val(itemObj.name);
-    itemPriceField.val(itemObj.unitPrice);
+
+    let price = itemObj.unitPrice.toString().replace("RS. ", "");
+
+    itemPriceField.val(price);
     itemStockField.val(itemObj.stock);
 });
