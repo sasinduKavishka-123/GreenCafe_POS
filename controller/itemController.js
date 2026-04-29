@@ -175,6 +175,15 @@ const checkInfoIsValid = (name, unitPrice, stock) =>{
 itemDeleteBtn.on('click', ()=>{
     let id = itemIDField.val();
 
+    if(id === nextItemId){
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Item ID Doesn't Exists!"
+        });
+        return;
+    }
+
     Swal.fire({
         title: "Are you sure?",
         text: "You won't be able to revert this!",
@@ -197,6 +206,45 @@ itemDeleteBtn.on('click', ()=>{
             });
         }
     });
+
+});
+
+
+// ----------- search customer ----------------------
+itemSearchBtn.on('click', ()=>{
+    let text = itemSearchField.val().toString();
+    itemTblBody.empty();
+    itemTableArray = [];
+    let itemArray = getItemData();
+
+    if(text.startsWith("ITEM_")){
+        itemArray.map((item, index)=>{
+            if(item.id.includes(text)){
+                itemTableArray.push(item);
+                let dataset = `${item.id}, ${item.name}, ${item.unitPrice}, ${item.stock}`;
+                let newRow = `<tr data-index={dataset}> <td>${item.id}</td> <td>${item.name}</td> <td>${item.unitPrice}</td> <td>${item.stock}</td> </tr>`;
+                itemTblBody.append(newRow);
+            }
+        });
+    }
+    else{
+        itemArray.map((item, index)=>{
+            if(item.name.toLowerCase().includes(text.toLowerCase())){
+                itemTableArray.push(item);
+                let dataset = `${item.id}, ${item.name}, ${item.unitPrice}, ${item.stock}`;
+                let newRow = `<tr data-index={dataset}> <td>${item.id}</td> <td>${item.name}</td> <td>${item.unitPrice}</td> <td>${item.stock}</td> </tr>`;
+                itemTblBody.append(newRow);
+            }
+        });
+    }
+
+    if(itemTableArray.length === 0){
+        Swal.fire({
+            title: "Oops...",
+            text: "Item Not Found!",
+            icon: "warning"
+        });
+    }
 
 });
 
