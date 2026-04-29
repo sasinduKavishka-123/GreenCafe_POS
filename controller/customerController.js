@@ -4,18 +4,18 @@ import {checkCusName, checkCusContact} from "../utils/regexUtils.js";
 
 
 // ------------ input fields ------------
-let cusIDField      = $('#customer_id_input');
-let cusNameField    = $('#customer_name_input');
-let cusContactField = $('#customer_phone_input');
-let cusAddressField = $('#customer_address_input');
-let cusSearchField  = $('#customer_search_input');
+const cusIDField      = $('#customer_id_input');
+const cusNameField    = $('#customer_name_input');
+const cusContactField = $('#customer_phone_input');
+const cusAddressField = $('#customer_address_input');
+const cusSearchField  = $('#customer_search_input');
 
 // ------------ buttons ------------
-let cusSaveBtn      = $('#customerSaveBtn');
-let cusUpdateBtn    = $('#customerUpdateBtn');
-let cusDeleteBtn    = $('#customerDeleteBtn');
-let cusResetBtn     = $('#customerResetBtn');
-let cusSearchBtn    = $('#customerSearchBtn');
+const cusSaveBtn      = $('#customerSaveBtn');
+const cusUpdateBtn    = $('#customerUpdateBtn');
+const cusDeleteBtn    = $('#customerDeleteBtn');
+const cusResetBtn     = $('#customerResetBtn');
+const cusSearchBtn    = $('#customerSearchBtn');
 
 let cusTableBody = $('#customerTBody');
 

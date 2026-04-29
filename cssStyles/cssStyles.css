@@ -196,19 +196,34 @@ caption{
 /**********************************************/
 
 #pos{
-    display: none;
+    /*display: none;*/
 }
 
 .form-control:disabled{
     background-color: #fff !important;
 }
 
-.btn-success{
+#tblHolder .btn-success{
     background-color: #32bb17 !important;
     border-color: #32bb17 !important;;
     color: #000 !important;;
     font-weight: bold !important;;
 }
+
+#orderAddBtn{
+    background-color: #0086DA !important;
+    border-color: #0086DA;
+    color: #000;
+    font-weight: bold;
+}
+
+#orderResetBtn{
+    background-color: #A600FF;
+    border-color: #A600FF;
+    color: #000;
+    font-weight: bold;
+}
+
 
 label{
     font-weight: bold;
@@ -262,7 +277,7 @@ label{
 /**********************************************/
 
 #item{
-    /*display: none;*/
+    display: none;
 }
 
 

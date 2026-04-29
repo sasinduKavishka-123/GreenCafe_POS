@@ -144,18 +144,12 @@
 
             <label for="order_name_input" class="form-label">Customer Name</label>
             <select class="form-select mb-3" aria-label="Default select example" id="order_name_input">
-                <option selected>Select a Customer</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                <option value="-1">Select a Customer</option>
             </select>
 
             <label for="order_item_input" class="form-label">Item Name</label>
             <select class="form-select mb-3" aria-label="Default select example" id="order_item_input">
-                <option selected>Select an Item</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                <option value="-1">Select an Item</option>
 
             </select>
 
@@ -172,10 +166,8 @@
                 <input type="number" min="0" class="form-control" id="order_qty_input">
             </div>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end my-btn-group">
-                <button type="button" id=" orderSaveBtn" class="btn btn-success">Save</button>
-                <button type="button" id="orderUpdateBtn" class="btn btn-warning">Update</button>
-                <button type="button" id="orderDeleteBtn" class="btn btn-danger">Delete</button>
-                <button type="reset" id="orderResetBtn" class="btn btn-info">Reset</button>
+                <button type="button" id="orderAddBtn" class="btn btn-success">Add</button>
+                <button type="button" id="orderResetBtn" class="btn btn-info">Reset</button>
             </div>
         </form>
 
@@ -190,32 +182,13 @@
                     <th scope="col">Stock</th>
                 </tr>
                 </thead>
-                <tbody id="placeOrderTBody" class="table-group-divider">
-                <tr>
-                    <th>1</th>
-                    <td>Tea</td>
-                    <td>30</td>
-                    <td>10</td>
-                </tr>
-                <tr>
-                    <th>2</th>
-                    <td>Coffee</td>
-                    <td>30</td>
-                    <td>100</td>
-                </tr>
-                <tr>
-                    <th>3</th>
-                    <td>Toffee</td>
-                    <td>20</td>
-                    <td>50</td>
-                </tr>
-                </tbody>
+                <tbody id="placeOrderTBody" class="table-group-divider"></tbody>
             </table>
 
             <h2 class="text-start d-inline-block mt-3">Sub Total: </h2>
-            <h2 class="text-start d-inline-block m-3">9999.99</h2>
+            <h2 class="text-start d-inline-block m-3"></h2>
             <div class=" container text-end">
-                <button type="button" class="btn btn-success text-end">
+                <button type="button" id="orderSaveBtn" class="btn btn-success text-end">
                     <img src="https://img.icons8.com/ios-glyphs/16/plus-math.png" alt="plus-math"/> Create Order
                 </button>
             </div>
@@ -472,7 +445,7 @@
 <script src="assets/lib/jquery-4.0.0.min.js"></script>
 
 <!-- dashboard controller -->
-<script src="controller/dashboardController.js"></script>
+<script type="module" src="controller/dashboardController.js"></script>
 
 <!-- customer controller -->
 <script type="module" src="controller/customerController.js"></script>
@@ -481,7 +454,7 @@
 <script type="module" src="controller/itemController.js"></script>
 
 <!-- pos controller -->
-
+<script type="module" src="controller/posController.js"></script>
 
 <!-- order controller -->
 

@@ -4,18 +4,18 @@ import {checkItemName, checkItemPrice, checkItemStock} from "../utils/regexUtils
 
 
 // ------------ input fields ------------
-let itemIDField     = $('#item_id_input');
-let itemNameField   = $('#item_name_input');
-let itemPriceField  = $('#item_price_input');
-let itemStockField  = $('#item_stock_input');
-let itemSearchField = $('#item_search_input');
+const itemIDField     = $('#item_id_input');
+const itemNameField   = $('#item_name_input');
+const itemPriceField  = $('#item_price_input');
+const itemStockField  = $('#item_stock_input');
+const itemSearchField = $('#item_search_input');
 
 // ------------ buttons ------------
-let itemSaveBtn      = $('#itemSaveBtn');
-let itemUpdateBtn    = $('#itemUpdateBtn');
-let itemDeleteBtn    = $('#itemDeleteBtn');
-let itemResetBtn     = $('#itemResetBtn');
-let itemSearchBtn    = $('#itemSearchBtn');
+const itemSaveBtn      = $('#itemSaveBtn');
+const itemUpdateBtn    = $('#itemUpdateBtn');
+const itemDeleteBtn    = $('#itemDeleteBtn');
+const itemResetBtn     = $('#itemResetBtn');
+const itemSearchBtn    = $('#itemSearchBtn');
 
 let itemTblBody = $('#itemTBody');
 

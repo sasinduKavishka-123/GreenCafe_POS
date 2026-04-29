@@ -1,21 +1,22 @@
 
+import {loadItems, loadCustomers} from "./posController.js";
 
 //content sections
-let dashboardSection = $("#dashboard");
-let posSection = $('#pos');
-let customerSection = $('#customer');
-let itemSection = $('#item');
-let orderSection = $('#order');
+const dashboardSection = $("#dashboard");
+const posSection = $('#pos');
+const customerSection = $('#customer');
+const itemSection = $('#item');
+const orderSection = $('#order');
 
 // section array
-let sections = [dashboardSection, posSection, customerSection, itemSection, orderSection];
+const sections = [dashboardSection, posSection, customerSection, itemSection, orderSection];
 
 // nav buttons
-let dashboardBtn = $('#dashboardNavBtn');
-let posBtn = $('#posNavBtn');
-let customerBtn = $('#customerNavBtn');
-let itemBtn = $('#itemNavBtn');
-let orderBtn = $('#ordersNavBtn');
+const dashboardBtn = $('#dashboardNavBtn');
+const posBtn = $('#posNavBtn');
+const customerBtn = $('#customerNavBtn');
+const itemBtn = $('#itemNavBtn');
+const orderBtn = $('#ordersNavBtn');
 
 
 // make all sections display none
@@ -33,6 +34,8 @@ dashboardBtn.on('click', function(){
 posBtn.on('click', function(){
     makeSectionDisplayNone();
     posSection.css({display: 'block'});
+    loadItems();
+    loadCustomers();
 });
 
 customerBtn.on('click', function(){
