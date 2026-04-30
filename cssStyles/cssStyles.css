@@ -211,8 +211,8 @@ caption{
 }
 
 #orderAddBtn{
-    background-color: #0086DA !important;
-    border-color: #0086DA;
+    background-color: #00b2ff !important;
+    border-color: #00b2ff;
     color: #000;
     font-weight: bold;
 }
@@ -220,6 +220,13 @@ caption{
 #orderResetBtn{
     background-color: #A600FF;
     border-color: #A600FF;
+    color: #000;
+    font-weight: bold;
+}
+
+#orderResetAllBtn{
+    background-color: #ff6200;
+    border-color: #ff6200;
     color: #000;
     font-weight: bold;
 }

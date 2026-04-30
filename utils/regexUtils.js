@@ -13,9 +13,9 @@ const checkCusContact = (contact)=>{
 
 
 // -------- item regex ----------------------
-const itemNameRegex = new RegExp('^.{4,}$');
+const itemNameRegex = new RegExp('^.{3,}$');
 const itemPriceRegex = new RegExp('^\\d+(\\.\\d{1,2})?$');
-const itemWholeNumberRegex = new RegExp('^\\d+$');
+const wholeNumberRegex = new RegExp('^\\d+$');
 
 const checkItemName = (name)=>{
     return itemNameRegex.test(name);
@@ -26,7 +26,14 @@ const checkItemPrice = (price)=>{
 };
 
 const checkItemStock = (stock)=>{
-    return itemWholeNumberRegex.test(stock);
+    return wholeNumberRegex.test(stock);
 };
 
-export {checkCusName, checkCusContact, checkItemName, checkItemPrice, checkItemStock};
+
+// -------- pos regex ----------------------
+
+const checkItemQty = (qty) =>{
+    return wholeNumberRegex.test(qty);
+}
+
+export {checkCusName, checkCusContact, checkItemName, checkItemPrice, checkItemStock, checkItemQty};

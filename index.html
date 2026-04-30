@@ -142,6 +142,11 @@
         <form class="row g-2 w-50 m-auto">
             <h1 class="text-center">Place Order</h1>
 
+            <div class="col-md-6">
+                <label for="order_id_input" class="form-label">Order ID</label>
+                <input type="text" class="form-control" id="order_id_input" disabled>
+            </div>
+
             <label for="order_name_input" class="form-label">Customer Name</label>
             <select class="form-select mb-3" aria-label="Default select example" id="order_name_input">
                 <option value="-1">Select a Customer</option>
@@ -163,11 +168,12 @@
             </div>
             <div class="col-md-6">
                 <label for="order_qty_input" class="form-label">Quantity</label>
-                <input type="number" min="0" class="form-control" id="order_qty_input">
+                <input type="number" min="0" class="form-control numInputs" id="order_qty_input">
             </div>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end my-btn-group">
                 <button type="button" id="orderAddBtn" class="btn btn-success">Add</button>
                 <button type="button" id="orderResetBtn" class="btn btn-info">Reset</button>
+                <button type="button" id="orderResetAllBtn" class="btn btn-info">Clear All</button>
             </div>
         </form>
 
@@ -179,7 +185,9 @@
                     <th scope="col">ID</th>
                     <th scope="col">Name</th>
                     <th scope="col">Unit Price</th>
-                    <th scope="col">Stock</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Total</th>
+                    <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody id="placeOrderTBody" class="table-group-divider"></tbody>
@@ -213,7 +221,7 @@
             </div>
             <div class="mb-3">
                 <label for="customer_phone_input" class="form-label">Contact</label>
-                <input type="text" class="form-control" id="customer_phone_input">
+                <input type="text" class="form-control numInputs" id="customer_phone_input">
             </div>
             <div class="mb-3">
                 <label for="customer_address_input" class="form-label">Address</label>
@@ -274,11 +282,11 @@
             </div>
             <div class="col-md-6">
                 <label for="item_price_input" class="form-label">Unit Price</label>
-                <input type="number" min="0" class="form-control" id="item_price_input">
+                <input type="number" min="0" class="form-control numInputs" id="item_price_input">
             </div>
             <div class="col-md-6">
                 <label for="item_stock_input" class="form-label">Stock</label>
-                <input type="number" min="0" class="form-control" id="item_stock_input">
+                <input type="number" min="0" class="form-control numInputs" id="item_stock_input">
             </div>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end my-btn-group">
                 <button type="button" id="itemSaveBtn" class="btn btn-success">Save</button>

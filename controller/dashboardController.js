@@ -1,5 +1,5 @@
 
-import {loadItems, loadCustomers} from "./posController.js";
+import {loadItems, loadCustomers, getNextOrderID} from "./posController.js";
 
 //content sections
 const dashboardSection = $("#dashboard");
@@ -36,6 +36,7 @@ posBtn.on('click', function(){
     posSection.css({display: 'block'});
     loadItems();
     loadCustomers();
+    getNextOrderID();
 });
 
 customerBtn.on('click', function(){
