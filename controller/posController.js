@@ -234,6 +234,7 @@ for(let i=0; i<numberFields.length; i++){
     });
 }
 
+// <i class="fa-solid fa-trash" style="color: rgb(161, 161, 161);"></i>
 
 
 export {getNextOrderID, resetSelects};

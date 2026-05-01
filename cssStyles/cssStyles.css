@@ -225,8 +225,8 @@ caption{
 }
 
 #orderResetAllBtn{
-    background-color: #ff6200;
-    border-color: #ff6200;
+    background-color: #ff8000;
+    border-color: #ff8000;
     color: #000;
     font-weight: bold;
 }
@@ -315,4 +315,14 @@ label{
 #orderTable caption{
     position: sticky;
     top: 0;
+}
+
+#orderSearchBtn{
+    background-color: #00b2ff;
+    border-color: #00b2ff;
+}
+
+#orderSearchResetBtn{
+    background-color: #A600FF;
+    border-color: #A600FF;
 }
