@@ -1,5 +1,6 @@
 
 import {ordersArray, orderItemsArray} from "../db/db.js";
+import {getItemData, updateItemData} from "./itemModel.js";
 
 // --------- order detail class ---------------
 class OrderDetail{
@@ -68,10 +69,83 @@ class OrderDetail{
     }
 }
 
+// --------- order class ---------------
+class Order{
+    #orderId;
+    #cusName;
+    #date;
+    #subTotal;
+
+    constructor(orderId, cusName, date, subTotal) {
+        this.#orderId = orderId;
+        this.#cusName = cusName;
+        this.#date = date;
+        this.#subTotal = subTotal;
+    }
+
+    get orderId() {
+        return this.#orderId;
+    }
+
+    set orderId(orderId) {
+        this.#orderId = orderId;
+    }
+
+    get cusName() {
+        return this.#cusName;
+    }
+
+    set cusName(cusName) {
+        this.#cusName = cusName;
+    }
+
+    get date() {
+        return this.#date;
+    }
+
+    set date(date) {
+        this.#date = date;
+    }
+
+    get subTotal() {
+        return this.#subTotal;
+    }
+
+    set subTotal(subTotal) {
+        this.#subTotal = subTotal;
+    }
+}
 
 // -------- add order item data -----------
 const addOrderItemData = (orderId, itemId, itemName, unitPrice, itemQty, total)=>{
     return new OrderDetail(orderId, itemId, itemName, unitPrice, itemQty, total);
+};
+
+
+// -------- add order item data to db -----------
+const addOrderItemDataToDB = (orderItemsData) =>{
+    orderItemsData.forEach(oid =>{
+        orderItemsArray.push(oid);
+        updateItemsQty(oid.itemId, oid.qty)
+    });
+    console.log(orderItemsArray);
+};
+
+
+// -------- update items -----------
+const updateItemsQty = (id, qty)=>{
+    let itemObj = getItemData().find(item => item.id === id);
+    if(itemObj){
+        console.log("update");
+        itemObj.stock = itemObj.stock - qty;
+    }
+};
+
+
+// -------- create order -----------
+const createOrder = (orderId, cusName, date, subTotal)=>{
+    ordersArray.push(new Order(orderId, cusName, date, subTotal));
+    console.log(ordersArray);
 };
 
 
@@ -84,4 +158,4 @@ const getOrderItemData = ()=>{
     return orderItemsArray;
 };
 
-export {getOrderItemData, getOrderData, addOrderItemData};
+export {getOrderItemData, getOrderData, addOrderItemData, addOrderItemDataToDB, createOrder};

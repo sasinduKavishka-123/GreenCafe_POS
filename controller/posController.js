@@ -1,6 +1,6 @@
 
 import {getItemData} from "../model/itemModel.js";
-import {getOrderData, addOrderItemData} from "../model/posModel.js";
+import {getOrderData, addOrderItemData, addOrderItemDataToDB, createOrder} from "../model/posModel.js";
 import {getCustomerData} from "../model/customerModel.js";
 
 
@@ -115,7 +115,7 @@ const calOrderTotal = ()=>{
     total = 0;
     orderItemTableArray.forEach(item =>{
         total +=  +item.total;
-    })
+    });
     orderSubTotal.text("Rs. " + total);
 };
 
@@ -184,6 +184,43 @@ orderAddBtn.on('click', ()=>{
     orderResetBtn.click();
     loadOrderDetailTbl();
     calOrderTotal();
+});
+
+
+// ------------ create order ----------------------
+orderCreateBtn.on('click', ()=>{
+
+    let cusName = orderNameBox.find('option:selected').text();
+    let date = (new Date()).toDateString();
+
+    if(orderNameBox.val() == (-1)){
+        Swal.fire({
+            title: "Error!",
+            text: "Select A Customer!",
+            icon: "warning",
+            iconColor: "#ff0000"
+        });
+        return;
+    }
+    else if(orderItemTableArray.length === 0){
+        Swal.fire({
+            title: "Error!",
+            text: "Item Table is Empty!",
+            icon: "warning",
+            iconColor: "#ff0000"
+        });
+        return;
+    }
+
+    addOrderItemDataToDB(orderItemTableArray);
+    createOrder(orderId, cusName, date, total);
+    orderClearAllBtn.click();
+    Swal.fire({
+        title: "Done!",
+        text: "Order Created Successfully!",
+        icon: "success"
+    });
+
 });
 
 
