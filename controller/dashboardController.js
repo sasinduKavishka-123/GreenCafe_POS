@@ -1,5 +1,6 @@
 
 import {getNextOrderID, resetSelects} from "./posController.js";
+import {loadOrderTable} from "./orderController.js";
 
 //content sections
 const dashboardSection = $("#dashboard");
@@ -51,4 +52,5 @@ itemBtn.on('click', function(){
 orderBtn.on('click', function(){
     makeSectionDisplayNone();
     orderSection.css({display: 'block'});
+    loadOrderTable();
 });

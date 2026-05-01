@@ -336,10 +336,10 @@
             <nav class="navbar bg-body-tertiary">
                 <div class="container-fluid">
                     <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search"
+                        <input class="form-control me-2" id="order_search_input" type="search" placeholder="Search"
                                aria-label="Search" data-bs-toggle="tooltip" data-bs-placement="top"
                                data-bs-title="Search order by ID or Name"/>
-                        <button class="btn btn-info" type="submit">Search</button>
+                        <button class="btn btn-info" id="orderSearchBtn" type="button">Search</button>
                     </form>
                 </div>
             </nav>
@@ -357,50 +357,7 @@
                             <th scope="col">Total</th>
                         </tr>
                     </thead>
-                    <tbody id="orderTBody" class="table-group-divider">
-                        <tr>
-                            <th>1</th>
-                            <td>Tea</td>
-                            <td>30</td>
-                            <td>10</td>
-                        </tr>
-                        <tr>
-                            <th>1</th>
-                            <td>Tea</td>
-                            <td>30</td>
-                            <td>10</td>
-                        </tr>
-                        <tr>
-                            <th>1</th>
-                            <td>Tea</td>
-                            <td>30</td>
-                            <td>10</td>
-                        </tr>
-                        <tr>
-                            <th>1</th>
-                            <td>Tea</td>
-                            <td>30</td>
-                            <td>10</td>
-                        </tr>
-                        <tr>
-                            <th>1</th>
-                            <td>Tea</td>
-                            <td>30</td>
-                            <td>10</td>
-                        </tr>
-                        <tr>
-                            <th>1</th>
-                            <td>Tea</td>
-                            <td>30</td>
-                            <td>10</td>
-                        </tr>
-                        <tr>
-                            <th>1</th>
-                            <td>Tea</td>
-                            <td>30</td>
-                            <td>10</td>
-                        </tr>
-                    </tbody>
+                    <tbody id="orderTBody" class="table-group-divider"></tbody>
                 </table>
 
             </section>
@@ -417,15 +374,7 @@
                     <th scope="col">Total</th>
                 </tr>
                 </thead>
-                <tbody id="orderDetailTBody" class="table-group-divider">
-                <tr>
-                    <th>1</th>
-                    <td>Tea</td>
-                    <td>30</td>
-                    <td>30</td>
-                    <td>10</td>
-                </tr>
-                </tbody>
+                <tbody id="orderDetailTBody" class="table-group-divider"></tbody>
             </table>
 
         </div>

@@ -107,6 +107,7 @@ orderClearAllBtn.on('click', ()=>{
     total       = 0;
     itemId      = "";
     itemName    = "";
+    getNextOrderID();
 });
 
 
@@ -125,7 +126,7 @@ const getNextOrderID = ()=>{
         orderId = "ORD_1";
     }
     else{
-        let lastId = getOrderData()[getOrderData().length-1].id.toString();
+        let lastId = getOrderData()[getOrderData().length-1].orderId.toString();
         let num = +lastId.replace("ORD_", "") + 1;
         orderId = "ORD_"+ num;
     }
@@ -139,7 +140,7 @@ const loadOrderDetailTbl = ()=>{
     orderItemTblBody.empty();
     orderItemTableArray.map((item) =>{
         let dataSet = `${item.orderId}, ${item.itemId}, ${item.itemName}, ${item.unitPrice}, ${item.qty}, ${item.total}`;
-        let newRow = `<tr data-index={dataset}> <td>${item.itemId}</td> <td>${item.itemName}</td> <td>${item.unitPrice}</td> <td>${item.qty}</td> <td>${item.qty * item.unitPrice}</td> </tr>`;
+        let newRow = `<tr data-index=${dataSet}> <td>${item.itemId}</td> <td>${item.itemName}</td> <td>${item.unitPrice}</td> <td>${item.qty}</td> <td>${item.qty * item.unitPrice}</td> </tr>`;
         orderItemTblBody.append(newRow);
     });
 };

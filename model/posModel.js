@@ -128,7 +128,6 @@ const addOrderItemDataToDB = (orderItemsData) =>{
         orderItemsArray.push(oid);
         updateItemsQty(oid.itemId, oid.qty)
     });
-    console.log(orderItemsArray);
 };
 
 
@@ -136,7 +135,6 @@ const addOrderItemDataToDB = (orderItemsData) =>{
 const updateItemsQty = (id, qty)=>{
     let itemObj = getItemData().find(item => item.id === id);
     if(itemObj){
-        console.log("update");
         itemObj.stock = itemObj.stock - qty;
     }
 };
@@ -145,7 +143,6 @@ const updateItemsQty = (id, qty)=>{
 // -------- create order -----------
 const createOrder = (orderId, cusName, date, subTotal)=>{
     ordersArray.push(new Order(orderId, cusName, date, subTotal));
-    console.log(ordersArray);
 };
 
 

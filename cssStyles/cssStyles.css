@@ -301,7 +301,8 @@ label{
 }
 
 #orderTblHolder{
-    height: 400px !important;
+    min-height: 200px;
+    max-height: 400px !important;
     overflow-x: hidden;
     position: relative;
 }
