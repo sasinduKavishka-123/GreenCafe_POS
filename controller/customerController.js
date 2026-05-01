@@ -292,3 +292,5 @@ cusTableBody.on('click', "tr", function (){
     cusContactField.val(customerObj.contact);
     cusAddressField.val(customerObj.address);
 });
+
+export {cleanCustomerForm};

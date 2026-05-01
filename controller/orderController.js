@@ -22,6 +22,10 @@ orderSearchResetBtn.on('click', ()=>{
     loadOrderTable();
 });
 
+const resetOrder = ()=>{
+    orderSearchResetBtn.click();
+};
+
 
 // ---------- load order table -----------------
 const loadOrderTable = ()=>{
@@ -93,4 +97,4 @@ orderSearchBtn.on('click', ()=>{
 
 
 
-export {loadOrderTable};
+export {resetOrder};

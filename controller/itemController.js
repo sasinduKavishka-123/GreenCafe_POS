@@ -294,3 +294,5 @@ itemTblBody.on('click', "tr", function (){
     itemPriceField.val(price);
     itemStockField.val(itemObj.stock);
 });
+
+export {clearItemForm};

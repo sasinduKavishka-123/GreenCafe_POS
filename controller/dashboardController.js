@@ -1,6 +1,8 @@
 
-import {getNextOrderID, resetSelects} from "./posController.js";
-import {loadOrderTable} from "./orderController.js";
+import {cleanCustomerForm} from "./customerController.js";
+import {clearItemForm} from "./itemController.js";
+import {clearPos, resetSelects} from "./posController.js";
+import {resetOrder} from "./orderController.js";
 
 //content sections
 const dashboardSection = $("#dashboard");
@@ -35,22 +37,24 @@ dashboardBtn.on('click', function(){
 posBtn.on('click', function(){
     makeSectionDisplayNone();
     posSection.css({display: 'block'});
+    clearPos();
     resetSelects();
-    getNextOrderID();
 });
 
 customerBtn.on('click', function(){
     makeSectionDisplayNone();
     customerSection.css({display: 'block'});
+    cleanCustomerForm();
 });
 
 itemBtn.on('click', function(){
     makeSectionDisplayNone();
     itemSection.css({display: 'block'});
+    clearItemForm();
 });
 
 orderBtn.on('click', function(){
     makeSectionDisplayNone();
     orderSection.css({display: 'block'});
-    loadOrderTable();
+    resetOrder();
 });

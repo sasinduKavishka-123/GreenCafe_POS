@@ -111,6 +111,9 @@ orderClearAllBtn.on('click', ()=>{
     getNextOrderID();
 });
 
+const clearPos = ()=>{
+    orderClearAllBtn.click();
+};
 
 // --------- calculate Total ---------------------
 const calOrderTotal = ()=>{
@@ -251,6 +254,7 @@ for(let i=0; i<numberFields.length; i++){
     });
 }
 
+
 // --------- remove table row when clicked the last cell ----------------
 itemListTbl.on('click', function(event) {
     const cell = event.target.closest('td');
@@ -264,4 +268,4 @@ itemListTbl.on('click', function(event) {
 });
 
 
-export {getNextOrderID, resetSelects};
+export {clearPos, resetSelects};
