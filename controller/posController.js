@@ -141,7 +141,7 @@ const loadOrderDetailTbl = ()=>{
     orderItemTblBody.empty();
     orderItemTableArray.map((item) =>{
         let dataSet = `${item.orderId}, ${item.itemId}, ${item.itemName}, ${item.unitPrice}, ${item.qty}, ${item.total}`;
-        let newRow = `<tr data-index=${dataSet}> <td>${item.itemId}</td> <td>${item.itemName}</td> <td>${item.unitPrice}</td> <td>${item.qty}</td> <td>${item.qty * item.unitPrice}</td> <td><i class="fa-solid fa-trash"></i></td> </tr>`;
+        let newRow = `<tr data-index=${dataSet}> <td>${item.itemId}</td> <td>${item.itemName}</td> <td>Rs. ${item.unitPrice}</td> <td>${item.qty}</td> <td>Rs. ${item.qty * item.unitPrice}</td> <td><i class="fa-solid fa-trash"></i></td> </tr>`;
         orderItemTblBody.append(newRow);
     });
 };
@@ -182,7 +182,7 @@ orderAddBtn.on('click', ()=>{
         return;
     }
 
-    orderItemTableArray.push(addOrderItemData(orderId, itemId, itemName, unitPrice, itemQty, total));
+    orderItemTableArray.push(addOrderItemData(orderId, itemId, itemName, unitPrice.toFixed(), itemQty, total.toFixed()));
     orderResetBtn.click();
     loadOrderDetailTbl();
     calOrderTotal();
@@ -214,13 +214,29 @@ orderCreateBtn.on('click', ()=>{
         return;
     }
 
-    addOrderItemDataToDB(orderItemTableArray);
-    createOrder(orderId, cusName, date, total);
-    orderClearAllBtn.click();
     Swal.fire({
-        title: "Done!",
-        text: "Order Created Successfully!",
-        icon: "success"
+        title: "Are you sure?",
+        text: "Do you want to save this order?",
+        icon: "warning",
+        iconColor: "#018c1b",
+        showCancelButton: true,
+        confirmButtonColor: "#09ac04",
+        cancelButtonColor: "#d60808",
+        confirmButtonText: "Yes, Save It!",
+        footer: `<h5>Order ID: ${orderId}</h5> <h5>Customer Name: ${cusName}</h5> <h5>Date: ${date}</h5>  <h5>Grand Total: Rs.${total.toFixed(2)}</h5>`
+    }).then((result) => {
+
+        if (result.isConfirmed){
+            addOrderItemDataToDB(orderItemTableArray);
+            createOrder(orderId, cusName, date, total.toFixed(2));
+            orderClearAllBtn.click();
+
+            Swal.fire({
+                title: "Done!",
+                text: "Order Saved Successfully!",
+                icon: "success"
+            });
+        }
     });
 
 });

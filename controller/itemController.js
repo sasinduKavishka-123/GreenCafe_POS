@@ -30,7 +30,7 @@ const loadItemTable = () =>{
     itemTableArray = getItemData();
     itemTableArray.map((item, index)=>{
         let dataset = `${item.id}, ${item.name}, ${item.unitPrice}, ${item.stock}`;
-        let newRow = `<tr data-index={dataset}> <td>${item.id}</td> <td>${item.name}</td> <td>${item.unitPrice}</td> <td>${item.stock}</td> </tr>`;
+        let newRow = `<tr data-index={dataset}> <td>${item.id}</td> <td>${item.name}</td> <td>Rs. ${item.unitPrice}</td> <td>${item.stock}</td> </tr>`;
         itemTblBody.append(newRow);
     });
 };
@@ -222,7 +222,7 @@ itemSearchBtn.on('click', ()=>{
             if(item.id.includes(text)){
                 itemTableArray.push(item);
                 let dataset = `${item.id}, ${item.name}, ${item.unitPrice}, ${item.stock}`;
-                let newRow = `<tr data-index={dataset}> <td>${item.id}</td> <td>${item.name}</td> <td>${item.unitPrice}</td> <td>${item.stock}</td> </tr>`;
+                let newRow = `<tr data-index={dataset}> <td>${item.id}</td> <td>${item.name}</td> <td>Rs. ${item.unitPrice}</td> <td>${item.stock}</td> </tr>`;
                 itemTblBody.append(newRow);
             }
         });
@@ -232,7 +232,7 @@ itemSearchBtn.on('click', ()=>{
             if(item.name.toLowerCase().includes(text.toLowerCase())){
                 itemTableArray.push(item);
                 let dataset = `${item.id}, ${item.name}, ${item.unitPrice}, ${item.stock}`;
-                let newRow = `<tr data-index={dataset}> <td>${item.id}</td> <td>${item.name}</td> <td>${item.unitPrice}</td> <td>${item.stock}</td> </tr>`;
+                let newRow = `<tr data-index={dataset}> <td>${item.id}</td> <td>${item.name}</td> <td>Rs. ${item.unitPrice}</td> <td>${item.stock}</td> </tr>`;
                 itemTblBody.append(newRow);
             }
         });

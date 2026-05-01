@@ -29,7 +29,7 @@ const loadOrderTable = ()=>{
     orderTableArray = getOrderData();
     orderTableArray.map((order)=>{
         let dataSet = `${order.orderId}, ${order.cusName}, ${order.date}, ${order.subTotal}`;
-        let newRow = `<tr data-index = ${dataSet}> <td>${order.orderId}</td> <td>${order.cusName}</td> <td>${order.date}</td> <td>${order.subTotal}</td> </tr>`;
+        let newRow = `<tr data-index = ${dataSet}> <td>${order.orderId}</td> <td>${order.cusName}</td> <td>${order.date}</td> <td>Rs. ${order.subTotal}</td> </tr>`;
         orderTBody.append(newRow);
     });
 };
@@ -44,7 +44,7 @@ orderTBody.on('click', 'tr', function(){
 
     getOrderItemData().map((odi, index)=>{
         if(odi.orderId == orderId){
-            let newRow = `<tr> <td>${odi.itemId}</td> <td>${odi.itemName}</td> <td>${odi.qty}</td> <td>${odi.unitPrice}</td> <td>${odi.total}</td> </tr>`;
+            let newRow = `<tr> <td>${odi.itemId}</td> <td>${odi.itemName}</td> <td>${odi.qty}</td> <td>Rs. ${odi.unitPrice}</td> <td>Rs. ${odi.total}</td> </tr>`;
             orderDetailTBody.append(newRow);
         }
     });
@@ -63,7 +63,7 @@ orderSearchBtn.on('click', ()=>{
         ordArray.map(order =>{
             if(order.orderId.includes(text)){
                 orderTableArray.push(order);
-                let newRow = `<tr> <td>${order.orderId}</td> <td>${order.cusName}</td> <td>${order.date}</td> <td>${order.subTotal}</td> </tr>`;
+                let newRow = `<tr> <td>${order.orderId}</td> <td>${order.cusName}</td> <td>${order.date}</td> <td>Rs. ${order.subTotal}</td> </tr>`;
                 orderTBody.append(newRow);
             }
         });
@@ -74,7 +74,7 @@ orderSearchBtn.on('click', ()=>{
         ordArray.map(order =>{
             if(order.cusName.toLowerCase().includes(text.toLowerCase())) {
                 orderTableArray.push(order);
-                let newRow = `<tr> <td>${order.orderId}</td> <td>${order.cusName}</td> <td>${order.date}</td> <td>${order.subTotal}</td> </tr>`;
+                let newRow = `<tr> <td>${order.orderId}</td> <td>${order.cusName}</td> <td>${order.date}</td> <td>Rs. ${order.subTotal}</td> </tr>`;
                 orderTBody.append(newRow);
             }
         });

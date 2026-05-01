@@ -210,6 +210,10 @@ caption{
     font-weight: bold !important;;
 }
 
+#tblHolder #placeOrderTable{
+    /*margin-bottom: 120px;*/
+}
+
 #orderAddBtn{
     background-color: #00b2ff !important;
     border-color: #00b2ff;
@@ -229,6 +233,10 @@ caption{
     border-color: #ff8000;
     color: #000;
     font-weight: bold;
+}
+
+#placeOrderTable td:last-child{
+    transition-duration: 200ms;
 }
 
 #placeOrderTable td:last-child:hover{
