@@ -13,7 +13,8 @@ const orderStockField   = $('#order_stock_input');
 const orderQtyField     = $('#order_qty_input');
 const orderSubTotal     = $('#pos_order_sub_total');
 
-const orderItemTblBody = $('#placeOrderTBody');
+const orderItemTblBody  = $('#placeOrderTBody');
+const itemListTbl       = $('#placeOrderTable');
 const numberFields      = $('.numInputs');
 
 // ------------ buttons ------------
@@ -140,7 +141,7 @@ const loadOrderDetailTbl = ()=>{
     orderItemTblBody.empty();
     orderItemTableArray.map((item) =>{
         let dataSet = `${item.orderId}, ${item.itemId}, ${item.itemName}, ${item.unitPrice}, ${item.qty}, ${item.total}`;
-        let newRow = `<tr data-index=${dataSet}> <td>${item.itemId}</td> <td>${item.itemName}</td> <td>${item.unitPrice}</td> <td>${item.qty}</td> <td>${item.qty * item.unitPrice}</td> </tr>`;
+        let newRow = `<tr data-index=${dataSet}> <td>${item.itemId}</td> <td>${item.itemName}</td> <td>${item.unitPrice}</td> <td>${item.qty}</td> <td>${item.qty * item.unitPrice}</td> <td><i class="fa-solid fa-trash"></i></td> </tr>`;
         orderItemTblBody.append(newRow);
     });
 };
@@ -234,7 +235,17 @@ for(let i=0; i<numberFields.length; i++){
     });
 }
 
-// <i class="fa-solid fa-trash" style="color: rgb(161, 161, 161);"></i>
+// --------- remove table row when clicked the last cell ----------------
+itemListTbl.on('click', function(event) {
+    const cell = event.target.closest('td');
+
+    // check if cell isn't null and it is the last cell in its row
+    if (cell && cell.matches(':last-child')) {
+        orderItemTableArray.splice(cell.closest('tr').rowIndex-1, 1);
+        cell.closest('tr').remove();
+    }
+
+});
 
 
 export {getNextOrderID, resetSelects};

@@ -231,6 +231,9 @@ caption{
     font-weight: bold;
 }
 
+#placeOrderTable td:last-child:hover{
+    color: #ff0000;
+}
 
 label{
     font-weight: bold;
@@ -326,3 +329,4 @@ label{
     background-color: #A600FF;
     border-color: #A600FF;
 }
+
