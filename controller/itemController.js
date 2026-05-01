@@ -86,7 +86,7 @@ itemSaveBtn.on('click', ()=>{
     else if(isInfoDuplicate){}
     else{
         let priceNum = +unitPrice;
-        addItemData(id, name, ("RS. " + priceNum.toFixed(2)), stock);
+        addItemData(id, name, (priceNum.toFixed(2)), stock);
         clearItemForm();
         Swal.fire({
             title: "Done!",
@@ -118,7 +118,7 @@ itemUpdateBtn.on('click', ()=>{
     else if(isInfoDuplicate){}
     else{
         let priceNum = +price;
-        let isUpdated = updateItemData(id, name, ("RS. " + priceNum.toFixed(2)), stock);
+        let isUpdated = updateItemData(id, name, (priceNum.toFixed(2)), stock);
 
         if(isUpdated){
             clearItemForm();

@@ -7,15 +7,15 @@ class OrderDetail{
     #itemId;
     #itemName;
     #unitPrice;
-    #stock;
+    #qty;
     #total;
 
-    constructor(orderId, itemId, itemName, unitPrice, stock, total) {
+    constructor(orderId, itemId, itemName, unitPrice, qty, total) {
         this.#orderId = orderId;
         this.#itemId = itemId;
         this.#itemName = itemName;
         this.#unitPrice = unitPrice;
-        this.#stock = stock;
+        this.#qty = qty;
         this.#total = total;
     }
 
@@ -51,12 +51,12 @@ class OrderDetail{
         this.#unitPrice = unitPrice;
     }
 
-    get stock() {
-        return this.#stock;
+    get qty() {
+        return this.#qty;
     }
 
-    set stock(stock) {
-        this.#stock = stock;
+    set qty(qty) {
+        this.#qty = qty;
     }
 
     get total() {
@@ -70,8 +70,8 @@ class OrderDetail{
 
 
 // -------- add order item data -----------
-const addOrderItemData = ()=>{
-
+const addOrderItemData = (orderId, itemId, itemName, unitPrice, itemQty, total)=>{
+    return new OrderDetail(orderId, itemId, itemName, unitPrice, itemQty, total);
 };
 
 
@@ -84,4 +84,4 @@ const getOrderItemData = ()=>{
     return orderItemsArray;
 };
 
-export {getOrderItemData, getOrderData};
+export {getOrderItemData, getOrderData, addOrderItemData};
