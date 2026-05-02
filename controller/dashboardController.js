@@ -54,7 +54,7 @@ const loadCardData = ()=>{
         total +=  +order.subTotal;
     });
 
-    totalRevenue.text(total);
+    totalRevenue.text("Rs." + total.toFixed(2));
 };
 
 

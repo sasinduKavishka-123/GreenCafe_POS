@@ -105,7 +105,7 @@ orderClearAllBtn.on('click', ()=>{
     orderNameBox.val("-1");
     orderItemTblBody.empty();
     orderItemTableArray = [];
-    total       = 0;
+    calOrderTotal();
     itemId      = "";
     itemName    = "";
     getNextOrderID();
@@ -121,7 +121,7 @@ const calOrderTotal = ()=>{
     orderItemTableArray.forEach(item =>{
         total +=  +item.total;
     });
-    orderSubTotal.text("Rs. " + total);
+    orderSubTotal.text("Rs. " + total.toFixed(2));
 };
 
 // ------------ get next order id ----------------------
@@ -144,7 +144,7 @@ const loadOrderDetailTbl = ()=>{
     orderItemTblBody.empty();
     orderItemTableArray.map((item) =>{
         let dataSet = `${item.orderId}, ${item.itemId}, ${item.itemName}, ${item.unitPrice}, ${item.qty}, ${item.total}`;
-        let newRow = `<tr data-index=${dataSet}> <td>${item.itemId}</td> <td>${item.itemName}</td> <td>Rs. ${item.unitPrice}</td> <td>${item.qty}</td> <td>Rs. ${item.qty * item.unitPrice}</td> <td><i class="fa-solid fa-trash"></i></td> </tr>`;
+        let newRow = `<tr data-index=${dataSet}> <td>${item.itemId}</td> <td>${item.itemName}</td> <td>Rs. ${item.unitPrice}</td> <td>${item.qty}</td> <td>Rs. ${(item.qty * item.unitPrice).toFixed(2)}</td> <td><i class="fa-solid fa-trash"></i></td> </tr>`;
         orderItemTblBody.append(newRow);
     });
 };
@@ -185,7 +185,7 @@ orderAddBtn.on('click', ()=>{
         return;
     }
 
-    orderItemTableArray.push(addOrderItemData(orderId, itemId, itemName, unitPrice.toFixed(), itemQty, total.toFixed()));
+    orderItemTableArray.push(addOrderItemData(orderId, itemId, itemName, unitPrice.toFixed(2), itemQty, total.toFixed(2)));
     orderResetBtn.click();
     loadOrderDetailTbl();
     calOrderTotal();
@@ -230,7 +230,17 @@ orderCreateBtn.on('click', ()=>{
     }).then((result) => {
 
         if (result.isConfirmed){
-            addOrderItemDataToDB(orderItemTableArray);
+            let isAdded = addOrderItemDataToDB(orderItemTableArray);
+            if(isAdded === false){
+                Swal.fire({
+                    title: "Error!",
+                    text: "Invalid Item Count!",
+                    icon: "warning",
+                    iconColor: "#ff0000"
+                });
+                console.log('ccccccccccc');
+                return;
+            }
             createOrder(orderId, cusName, date, total.toFixed(2));
             orderClearAllBtn.click();
 
@@ -263,6 +273,7 @@ itemListTbl.on('click', function(event) {
     if (cell && cell.matches(':last-child')) {
         orderItemTableArray.splice(cell.closest('tr').rowIndex-1, 1);
         cell.closest('tr').remove();
+        calOrderTotal();
     }
 
 });

@@ -20,371 +20,403 @@
 </head>
 <body>
 
-<!-- sidebar -->
-<aside class="sideBar">
-    <h1>Green Cafe</h1>
-    <hr id="sidebarLine">
-    <ol id="navBtnHolder">
-        <li class="navBtn" id="dashboardNavBtn">
-            <i class="fa-solid fa-house navIcons"></i> Dashboard
-        </li>
-        <li class="navBtn" id="posNavBtn">
-            <i class="fa-solid fa-cart-shopping"></i> POS
-        </li>
-        <li class="navBtn" id="customerNavBtn">
-            <i class="fa-solid fa-user"></i> Customers
-        </li>
-        <li class="navBtn" id="itemNavBtn">
-            <i class="fa-solid fa-mug-hot"></i> Items
-        </li>
-        <li class="navBtn" id="ordersNavBtn">
-            <i class="fa-solid fa-clipboard"></i> Orders
-        </li>
-    </ol>
+<section id="login">
+    <div id="logoHolder">
+        <img src="assets/coffeeShopLogo.png" alt="coffee shop logo">
+        <h1>Green Cafe</h1>
+    </div>
 
-    <button type="button" class="btn btn-outline-success logoutBtn">
-        Log Out <i class="fa-solid fa-arrow-right-from-bracket"></i>
-    </button>
+    <div id="formHolder">
+        <div>
+            <img src="https://img.icons8.com/material-rounded/100/user-male-circle.png" alt="user-male-circle"/>
+            <div id="textWelcome">Welcome</div>
+            <div id="textLogin">User Log In</div>
+            <div class="container">
+                <label for="inputUserName" class="form-label">User Name</label>
+                <input type="text" id="inputUserName" class="form-control">
 
-</aside>
+                <label for="inputPassword" class="form-label">Password</label>
+                <input type="password" id="inputPassword" class="form-control">
 
-<!-- navbar -->
-<nav id="navbar">
-    <div class="navPointers"></div>
-    <div class="navDataHolder">Date: 2026-04-23</div>
-
-    <div class="navPointers"></div>
-    <div class="navDataHolder">User: Sasindu Kavishka</div>
-</nav>
-
-<!-- main content -->
-<main id="mainBody">
-
-    <!-- Dashboard -->
-    <section id="dashboard" class="container">
-
-        <!-- card container -->
-        <div class="cardHolder row justify-content-md-center row-cols-3 row-cols-lg-5">
-
-            <div class="card col ">
-                <div class="card-body">
-                    <h2 class="card-title" id="card-icon-1"><i class="fa-solid fa-cart-shopping"></i></h2>
-                    <h5 class="card-subtitle mb-2 text-body-secondary">Total Orders</h5>
-                    <h3 class="card-text" id="order_count">999</h3>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-center my-btn-group">
+                    <button type="button" class="btn btn-success">Log in</button>
                 </div>
-            </div>
 
-            <div class="card col ">
-                <div class="card-body">
-                    <h2 class="card-title" id="card-icon-2"><i class="fa-solid fa-dollar-sign"></i></h2>
-                    <h5 class="card-subtitle mb-2 text-body-secondary">Total Revenue</h5>
-                    <h3 class="card-text" id="total_revenue">999</h3>
-                </div>
             </div>
-
-            <div class="card col">
-                <div class="card-body">
-                    <h2 class="card-title" id="card-icon-3"><i class="fa-solid fa-mug-hot"></i></h2>
-                    <h5 class="card-subtitle mb-2 text-body-secondary">Total Items</h5>
-                    <h3 class="card-text" id="item_count">999</h3>
-                </div>
-            </div>
-
-            <div class="card col">
-                <div class="card-body">
-                    <h2 class="card-title" id="card-icon-4"><i class="fa-solid fa-user"></i></h2>
-                    <h5 class="card-subtitle mb-2 text-body-secondary">Total Customers</h5>
-                    <h3 class="card-text" id="customer_count">999</h3>
-                </div>
-            </div>
-
         </div>
+    </div>
+</section>
 
-        <!-- critical table -->
-        <div class="tblHolder container">
+<section id="app">
 
-            <table class="table table-hover caption-top criticalTbl">
-                <caption>Critical Stock Levels</caption>
-                <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Qty</th>
-                </tr>
-                </thead>
-                <tbody class="table-group-divider">
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Coffee</td>
-                    <td>23</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Tea</td>
-                    <td>10</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Toffee</td>
-                    <td>12</td>
-                </tr>
-                </tbody>
-            </table>
+    <!-- sidebar -->
+    <aside class="sideBar">
+        <h1>Green Cafe</h1>
+        <hr id="sidebarLine">
+        <ol id="navBtnHolder">
+            <li class="navBtn" id="dashboardNavBtn">
+                <i class="fa-solid fa-house navIcons"></i> Dashboard
+            </li>
+            <li class="navBtn" id="posNavBtn">
+                <i class="fa-solid fa-cart-shopping"></i> POS
+            </li>
+            <li class="navBtn" id="customerNavBtn">
+                <i class="fa-solid fa-user"></i> Customers
+            </li>
+            <li class="navBtn" id="itemNavBtn">
+                <i class="fa-solid fa-mug-hot"></i> Items
+            </li>
+            <li class="navBtn" id="ordersNavBtn">
+                <i class="fa-solid fa-clipboard"></i> Orders
+            </li>
+        </ol>
 
-        </div>
+        <button type="button" class="btn btn-outline-success logoutBtn">
+            Log Out <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        </button>
 
+    </aside>
 
-    </section>
+    <!-- navbar -->
+    <nav id="navbar">
+        <div class="navPointers"></div>
+        <div class="navDataHolder">Date: 2026-04-23</div>
 
-    <!-- POS -->
-    <section id="pos" class="container">
+        <div class="navPointers"></div>
+        <div class="navDataHolder">User: Sasindu Kavishka</div>
+    </nav>
 
-        <form class="row g-2 w-50 m-auto">
-            <h1 class="text-center">Place Order</h1>
+    <!-- main content -->
+    <main id="mainBody">
 
-            <div class="col-md-6">
-                <label for="order_id_input" class="form-label">Order ID</label>
-                <input type="text" class="form-control" id="order_id_input" disabled>
-            </div>
+        <!-- Dashboard -->
+        <section id="dashboard" class="container">
 
-            <label for="order_name_input" class="form-label">Customer Name</label>
-            <select class="form-select mb-3" aria-label="Default select example" id="order_name_input">
-                <option value="-1">Select a Customer</option>
-            </select>
+            <!-- card container -->
+            <div class="cardHolder row justify-content-md-center row-cols-3 row-cols-lg-5">
 
-            <label for="order_item_input" class="form-label">Item Name</label>
-            <select class="form-select mb-3" aria-label="Default select example" id="order_item_input">
-                <option value="-1">Select an Item</option>
-
-            </select>
-
-            <div class="col-md-6">
-                <label for="order_price_input" class="form-label">Unit Price</label>
-                <input type="text" class="form-control" id="order_price_input" disabled>
-            </div>
-            <div class="col-md-6">
-                <label for="order_stock_input" class="form-label">Stock</label>
-                <input type="text" class="form-control" id="order_stock_input" disabled>
-            </div>
-            <div class="col-md-6">
-                <label for="order_qty_input" class="form-label">Quantity</label>
-                <input type="number" min="0" class="form-control numInputs" id="order_qty_input">
-            </div>
-            <div class="d-grid gap-2 d-md-flex justify-content-md-end my-btn-group">
-                <button type="button" id="orderAddBtn" class="btn btn-success">Add</button>
-                <button type="button" id="orderResetBtn" class="btn btn-info">Reset</button>
-                <button type="button" id="orderResetAllBtn" class="btn btn-info">Clear All</button>
-            </div>
-        </form>
-
-        <div class="tblHolder container">
-
-            <table class="table table-hover  m-1 mb-5" id="placeOrderTable">
-                <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Unit Price</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Total</th>
-                    <th scope="col"></th>
-                </tr>
-                </thead>
-                <tbody id="placeOrderTBody" class="table-group-divider"></tbody>
-            </table>
-
-            <h2 class="text-start d-inline-block mt-3">Grand Total: </h2>
-            <h2 class="text-start d-inline-block m-3" id="pos_order_sub_total"></h2>
-            <div class=" container text-end">
-                <button type="button" id="orderSaveBtn" class="btn btn-success text-end">
-                    <img src="https://img.icons8.com/ios-glyphs/16/plus-math.png" alt="plus-math"/> Create Order
-                </button>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- Customers -->
-    <section id="customer" class="container">
-
-        <form class="w-50 m-auto">
-            <h1 class="text-center">Customer Management</h1>
-            <div class="mb-3">
-                <label for="customer_id_input" class="form-label">ID</label>
-                <input type="text" class="form-control" id="customer_id_input" disabled>
-            </div>
-            <div class="mb-3">
-                <label for="customer_name_input" class="form-label">Name</label>
-                <input type="text" class="form-control" id="customer_name_input">
-            </div>
-            <div class="mb-3">
-                <label for="customer_phone_input" class="form-label">Contact</label>
-                <input type="text" class="form-control numInputs" id="customer_phone_input">
-            </div>
-            <div class="mb-3">
-                <label for="customer_address_input" class="form-label">Address</label>
-                <textarea class="form-control" id="customer_address_input" style="height: 100px"></textarea>
-            </div>
-            <div class="d-grid gap-2 d-md-flex justify-content-md-end my-btn-group">
-                <button type="button" id="customerSaveBtn" class="btn btn-success">Save</button>
-                <button type="button" id="customerUpdateBtn" class="btn btn-warning">Update</button>
-                <button type="button" id="customerDeleteBtn" class="btn btn-danger">Delete</button>
-                <button type="button" id="customerResetBtn" class="btn btn-info">Reset</button>
-            </div>
-        </form>
-
-        <div class="tblHolder container">
-
-            <!-- search customer -->
-            <nav class="navbar bg-body-tertiary">
-                <div class="container-fluid">
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" id="customer_search_input" type="search" placeholder="Search"
-                               aria-label="Search" data-bs-toggle="tooltip" data-bs-placement="top"
-                               data-bs-title="Search customer by ID or Name"/>
-                        <button class="btn btn-info" id="customerSearchBtn" type="button">Search</button>
-                    </form>
+                <div class="card col ">
+                    <div class="card-body">
+                        <h2 class="card-title" id="card-icon-1"><i class="fa-solid fa-cart-shopping"></i></h2>
+                        <h5 class="card-subtitle mb-2 text-body-secondary">Total Orders</h5>
+                        <h3 class="card-text" id="order_count">0</h3>
+                    </div>
                 </div>
-            </nav>
 
-
-            <table class="table table-hover m-1" id="customerTable">
-                <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Contact</th>
-                    <th scope="col">Address</th>
-                </tr>
-                </thead>
-                <tbody id="customerTBody" class="table-group-divider"></tbody>
-            </table>
-
-        </div>
-
-    </section>
-
-
-    <!-- Items -->
-    <section id="item" class="container">
-
-        <form class="row g-2 w-50 m-auto">
-            <h1 class="text-center">Item Management</h1>
-            <div class="mb-3">
-                <label for="item_id_input" class="form-label">ID</label>
-                <input type="text" class="form-control" id="item_id_input" disabled>
-            </div>
-            <div class="mb-3">
-                <label for="item_name_input" class="form-label">Name</label>
-                <input type="text" class="form-control" id="item_name_input">
-            </div>
-            <div class="col-md-6">
-                <label for="item_price_input" class="form-label">Unit Price</label>
-                <input type="number" min="0" class="form-control numInputs" id="item_price_input">
-            </div>
-            <div class="col-md-6">
-                <label for="item_stock_input" class="form-label">Stock</label>
-                <input type="number" min="0" class="form-control numInputs" id="item_stock_input">
-            </div>
-            <div class="d-grid gap-2 d-md-flex justify-content-md-end my-btn-group">
-                <button type="button" id="itemSaveBtn" class="btn btn-success">Save</button>
-                <button type="button" id="itemUpdateBtn" class="btn btn-warning">Update</button>
-                <button type="button" id="itemDeleteBtn" class="btn btn-danger">Delete</button>
-                <button type="button" id="itemResetBtn" class="btn btn-info">Reset</button>
-            </div>
-        </form>
-
-        <div class="tblHolder container">
-
-            <!-- item search -->
-            <nav class="navbar bg-body-tertiary">
-                <div class="container-fluid">
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" id="item_search_input" type="search" placeholder="Search"
-                               aria-label="Search" data-bs-toggle="tooltip" data-bs-placement="top"
-                               data-bs-title="Search item by ID or Name"/>
-                        <button class="btn btn-info" id="itemSearchBtn" type="button">Search</button>
-                    </form>
+                <div class="card col ">
+                    <div class="card-body">
+                        <h2 class="card-title" id="card-icon-2"><i class="fa-solid fa-dollar-sign"></i></h2>
+                        <h5 class="card-subtitle mb-2 text-body-secondary">Total Revenue</h5>
+                        <h3 class="card-text" id="total_revenue">0</h3>
+                    </div>
                 </div>
-            </nav>
 
-            <table class="table table-hover  m-1" id="itemTable">
-                <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Unit Price</th>
-                    <th scope="col">Stock</th>
-                </tr>
-                </thead>
-                <tbody id="itemTBody" class="table-group-divider"></tbody>
-            </table>
-
-        </div>
-
-    </section>
-
-
-    <!-- Orders -->
-    <section id="order" class="container">
-        <h1 class="text-center">Order Management</h1>
-        <div class="tblHolder container">
-
-            <!-- order search -->
-            <nav class="navbar bg-body-tertiary">
-                <div class="container-fluid">
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" id="order_search_input" type="search" placeholder="Search"
-                               aria-label="Search" data-bs-toggle="tooltip" data-bs-placement="top"
-                               data-bs-title="Search order by ID or Name"/>
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-end my-btn-group">
-                            <button class="btn btn-info" id="orderSearchBtn" type="button">Search</button>
-                            <button class="btn btn-warning" id="orderSearchResetBtn" type="button">Reset</button>
-                        </div>
-                    </form>
+                <div class="card col">
+                    <div class="card-body">
+                        <h2 class="card-title" id="card-icon-3"><i class="fa-solid fa-mug-hot"></i></h2>
+                        <h5 class="card-subtitle mb-2 text-body-secondary">Total Items</h5>
+                        <h3 class="card-text" id="item_count">0</h3>
+                    </div>
                 </div>
-            </nav>
 
-            <!-- order table -->
-            <section id="orderTblHolder">
+                <div class="card col">
+                    <div class="card-body">
+                        <h2 class="card-title" id="card-icon-4"><i class="fa-solid fa-user"></i></h2>
+                        <h5 class="card-subtitle mb-2 text-body-secondary">Total Customers</h5>
+                        <h3 class="card-text" id="customer_count">0</h3>
+                    </div>
+                </div>
 
-                <table class="table table-hover caption-top m-1" id="orderTable">
-                    <caption>Orders</caption>
+            </div>
+
+            <!-- critical table -->
+            <div class="tblHolder container">
+
+                <table class="table table-hover caption-top criticalTbl">
+                    <caption>Critical Stock Levels</caption>
                     <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Qty</th>
+                    </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Coffee</td>
+                        <td>23</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Tea</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Toffee</td>
+                        <td>12</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+
+        </section>
+
+        <!-- POS -->
+        <section id="pos" class="container">
+
+            <form class="row g-2 w-50 m-auto">
+                <h1 class="text-center">Place Order</h1>
+
+                <div class="col-md-6">
+                    <label for="order_id_input" class="form-label">Order ID</label>
+                    <input type="text" class="form-control" id="order_id_input" disabled>
+                </div>
+
+                <label for="order_name_input" class="form-label">Customer Name</label>
+                <select class="form-select mb-3" aria-label="Default select example" id="order_name_input">
+                    <option value="-1">Select a Customer</option>
+                </select>
+
+                <label for="order_item_input" class="form-label">Item Name</label>
+                <select class="form-select mb-3" aria-label="Default select example" id="order_item_input">
+                    <option value="-1">Select an Item</option>
+
+                </select>
+
+                <div class="col-md-6">
+                    <label for="order_price_input" class="form-label">Unit Price</label>
+                    <input type="text" class="form-control" id="order_price_input" disabled>
+                </div>
+                <div class="col-md-6">
+                    <label for="order_stock_input" class="form-label">Stock</label>
+                    <input type="text" class="form-control" id="order_stock_input" disabled>
+                </div>
+                <div class="col-md-6">
+                    <label for="order_qty_input" class="form-label">Quantity</label>
+                    <input type="number" min="0" class="form-control numInputs" id="order_qty_input">
+                </div>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end my-btn-group">
+                    <button type="button" id="orderAddBtn" class="btn btn-success">Add</button>
+                    <button type="button" id="orderResetBtn" class="btn btn-info">Reset</button>
+                    <button type="button" id="orderResetAllBtn" class="btn btn-info">Clear All</button>
+                </div>
+            </form>
+
+            <div class="tblHolder container">
+
+                <table class="table table-hover  m-1 mb-5" id="placeOrderTable">
+                    <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Unit Price</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Total</th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody id="placeOrderTBody" class="table-group-divider"></tbody>
+                </table>
+
+                <h2 class="text-start d-inline-block mt-3">Grand Total: </h2>
+                <h2 class="text-start d-inline-block m-3" id="pos_order_sub_total"></h2>
+                <div class=" container text-end">
+                    <button type="button" id="orderSaveBtn" class="btn btn-success text-end">
+                        <img src="https://img.icons8.com/ios-glyphs/16/plus-math.png" alt="plus-math"/> Create Order
+                    </button>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Customers -->
+        <section id="customer" class="container">
+
+            <form class="w-50 m-auto">
+                <h1 class="text-center">Customer Management</h1>
+                <div class="mb-3">
+                    <label for="customer_id_input" class="form-label">ID</label>
+                    <input type="text" class="form-control" id="customer_id_input" disabled>
+                </div>
+                <div class="mb-3">
+                    <label for="customer_name_input" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="customer_name_input">
+                </div>
+                <div class="mb-3">
+                    <label for="customer_phone_input" class="form-label">Contact</label>
+                    <input type="text" class="form-control numInputs" id="customer_phone_input">
+                </div>
+                <div class="mb-3">
+                    <label for="customer_address_input" class="form-label">Address</label>
+                    <textarea class="form-control" id="customer_address_input" style="height: 100px"></textarea>
+                </div>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end my-btn-group">
+                    <button type="button" id="customerSaveBtn" class="btn btn-success">Save</button>
+                    <button type="button" id="customerUpdateBtn" class="btn btn-warning">Update</button>
+                    <button type="button" id="customerDeleteBtn" class="btn btn-danger">Delete</button>
+                    <button type="button" id="customerResetBtn" class="btn btn-info">Reset</button>
+                </div>
+            </form>
+
+            <div class="tblHolder container">
+
+                <!-- search customer -->
+                <nav class="navbar bg-body-tertiary">
+                    <div class="container-fluid">
+                        <form class="d-flex" role="search">
+                            <input class="form-control me-2" id="customer_search_input" type="search" placeholder="Search"
+                                   aria-label="Search" data-bs-toggle="tooltip" data-bs-placement="top"
+                                   data-bs-title="Search customer by ID or Name"/>
+                            <button class="btn btn-info" id="customerSearchBtn" type="button">Search</button>
+                        </form>
+                    </div>
+                </nav>
+
+
+                <table class="table table-hover m-1" id="customerTable">
+                    <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Contact</th>
+                        <th scope="col">Address</th>
+                    </tr>
+                    </thead>
+                    <tbody id="customerTBody" class="table-group-divider"></tbody>
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- Items -->
+        <section id="item" class="container">
+
+            <form class="row g-2 w-50 m-auto">
+                <h1 class="text-center">Item Management</h1>
+                <div class="mb-3">
+                    <label for="item_id_input" class="form-label">ID</label>
+                    <input type="text" class="form-control" id="item_id_input" disabled>
+                </div>
+                <div class="mb-3">
+                    <label for="item_name_input" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="item_name_input">
+                </div>
+                <div class="col-md-6">
+                    <label for="item_price_input" class="form-label">Unit Price</label>
+                    <input type="number" min="0" class="form-control numInputs" id="item_price_input">
+                </div>
+                <div class="col-md-6">
+                    <label for="item_stock_input" class="form-label">Stock</label>
+                    <input type="number" min="0" class="form-control numInputs" id="item_stock_input">
+                </div>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end my-btn-group">
+                    <button type="button" id="itemSaveBtn" class="btn btn-success">Save</button>
+                    <button type="button" id="itemUpdateBtn" class="btn btn-warning">Update</button>
+                    <button type="button" id="itemDeleteBtn" class="btn btn-danger">Delete</button>
+                    <button type="button" id="itemResetBtn" class="btn btn-info">Reset</button>
+                </div>
+            </form>
+
+            <div class="tblHolder container">
+
+                <!-- item search -->
+                <nav class="navbar bg-body-tertiary">
+                    <div class="container-fluid">
+                        <form class="d-flex" role="search">
+                            <input class="form-control me-2" id="item_search_input" type="search" placeholder="Search"
+                                   aria-label="Search" data-bs-toggle="tooltip" data-bs-placement="top"
+                                   data-bs-title="Search item by ID or Name"/>
+                            <button class="btn btn-info" id="itemSearchBtn" type="button">Search</button>
+                        </form>
+                    </div>
+                </nav>
+
+                <table class="table table-hover  m-1" id="itemTable">
+                    <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Unit Price</th>
+                        <th scope="col">Stock</th>
+                    </tr>
+                    </thead>
+                    <tbody id="itemTBody" class="table-group-divider"></tbody>
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- Orders -->
+        <section id="order" class="container">
+            <h1 class="text-center">Order Management</h1>
+            <div class="tblHolder container">
+
+                <!-- order search -->
+                <nav class="navbar bg-body-tertiary">
+                    <div class="container-fluid">
+                        <form class="d-flex" role="search">
+                            <input class="form-control me-2" id="order_search_input" type="search" placeholder="Search"
+                                   aria-label="Search" data-bs-toggle="tooltip" data-bs-placement="top"
+                                   data-bs-title="Search order by ID or Name"/>
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end my-btn-group">
+                                <button class="btn btn-info" id="orderSearchBtn" type="button">Search</button>
+                                <button class="btn btn-warning" id="orderSearchResetBtn" type="button">Reset</button>
+                            </div>
+                        </form>
+                    </div>
+                </nav>
+
+                <!-- order table -->
+                <section id="orderTblHolder">
+
+                    <table class="table table-hover caption-top m-1" id="orderTable">
+                        <caption>Orders</caption>
+                        <thead>
                         <tr>
                             <th scope="col">ID</th>
                             <th scope="col">Customer Name</th>
                             <th scope="col">Date</th>
                             <th scope="col">Total</th>
                         </tr>
+                        </thead>
+                        <tbody id="orderTBody" class="table-group-divider"></tbody>
+                    </table>
+
+                </section>
+
+                <!-- order detail table -->
+                <table class="table table-hover caption-top m-1 mt-5" id="orderDetailTable">
+                    <caption>Order Items</caption>
+                    <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Item Name</th>
+                        <th scope="col">Qty</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Total</th>
+                    </tr>
                     </thead>
-                    <tbody id="orderTBody" class="table-group-divider"></tbody>
+                    <tbody id="orderDetailTBody" class="table-group-divider"></tbody>
                 </table>
 
-            </section>
+            </div>
 
-            <!-- order detail table -->
-            <table class="table table-hover caption-top m-1 mt-5" id="orderDetailTable">
-                <caption>Order Items</caption>
-                <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Item Name</th>
-                    <th scope="col">Qty</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Total</th>
-                </tr>
-                </thead>
-                <tbody id="orderDetailTBody" class="table-group-divider"></tbody>
-            </table>
+        </section>
 
-        </div>
+    </main>
 
-    </section>
+</section>
 
-</main>
 
 <!-- sweet alert -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

@@ -63,6 +63,21 @@ const updateItemData = (id, name, unitPrice, stock) =>{
     }
 };
 
+const updateItemQty = (id , qty)=>{
+    let itemObj = getItemData().find(item => item.id === id);
+    if(itemObj){
+        if((itemObj.stock - qty) < 0){
+            console.log('aaaaaaaa');
+            return false;
+        }
+        else{
+            itemObj.stock = itemObj.stock - qty;
+            return true;
+        }
+    }
+    return false;
+};
+
 
 // --------- delete item ---------------
 const deleteItemData = (id)=>{
@@ -79,4 +94,4 @@ const getItemData = ()=>{
 };
 
 
-export {addItemData, updateItemData, deleteItemData, getItemData};
+export {addItemData, updateItemData, deleteItemData, getItemData, updateItemQty};

@@ -1,6 +1,6 @@
 
 import {ordersArray, orderItemsArray} from "../db/db.js";
-import {getItemData, updateItemData} from "./itemModel.js";
+import {updateItemQty} from "./itemModel.js";
 
 // --------- order detail class ---------------
 class OrderDetail{
@@ -124,19 +124,28 @@ const addOrderItemData = (orderId, itemId, itemName, unitPrice, itemQty, total)=
 
 // -------- add order item data to db -----------
 const addOrderItemDataToDB = (orderItemsData) =>{
+
+    let isItemUpdated = false;
+
+    orderItemsData.forEach(oid =>{
+        isItemUpdated = updateItemsQty(oid.itemId, oid.qty);
+        if(isItemUpdated === false){
+            console.log('bbbbbbbbbb');
+            return false;
+        }
+    });
+
     orderItemsData.forEach(oid =>{
         orderItemsArray.push(oid);
-        updateItemsQty(oid.itemId, oid.qty)
     });
+
+    return isItemUpdated;
 };
 
 
 // -------- update items -----------
 const updateItemsQty = (id, qty)=>{
-    let itemObj = getItemData().find(item => item.id === id);
-    if(itemObj){
-        itemObj.stock = itemObj.stock - qty;
-    }
+    return updateItemQty(id, qty);
 };
 
 

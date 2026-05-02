@@ -1,4 +1,94 @@
 
+input, select, textarea{
+    border-color: #878787 !important;
+}
+
+body{
+    background-color: #dfffe9 !important;
+}
+
+/*************** login *******************/
+#login{
+    width: 800px;
+    height: 550px;
+    position: absolute;
+    left: 50vw;
+    top: 50vh;
+    transform: translate(-50%, -50%);
+    background-color: #01c916;
+    border: #0E0E0F solid 4px;
+    border-radius: 10px;
+    /*display: none;*/
+}
+
+#logoHolder{
+    position: absolute;
+    width: 45%;
+    background-color: #fff;
+    box-shadow: 3px 0 15px #0E0E0F;
+    border-radius: 5px 20px 20px 5px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#logoHolder img{
+    width: 300px;
+    position: relative;
+    top: 100px;
+}
+
+#logoHolder h1{
+    top: 0 !important;
+}
+
+#formHolder{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 55%;
+    height: 100%;
+    padding: 20px 30px;
+}
+
+#formHolder > div{
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#textWelcome{
+    font-family: "Inter", sans-serif;
+    font-size: 20px;
+    margin-top: 15px;
+}
+
+#textLogin{
+    font-family: "Inter", sans-serif;
+    font-size: 36px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+#formHolder > div > .container{
+    margin-top: 20px;
+}
+
+#formHolder > div > .container button{
+    margin-top: 40px;
+    width: 60% !important;
+}
+
+/*************** app *******************/
+#app{
+    display: none;
+}
+
 /*************** sidebar *******************/
 
 .sideBar{
@@ -16,7 +106,7 @@
     user-select: none;
 }
 
-.sideBar > h1{
+.sideBar > h1, #login h1{
     font-family: "Pacifico", cursive;
     font-size: 42px;
     display: inline-block;
