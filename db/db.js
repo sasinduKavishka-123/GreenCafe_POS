@@ -1,4 +1,7 @@
 
+// --------- User Array -------------
+let userArray = [];
+
 // --------- customers array ---------
 let customersArray = [ ];
 
@@ -9,4 +12,4 @@ let itemsArray = [];
 let ordersArray = [];
 let orderItemsArray = [];
 
-export {customersArray , itemsArray, ordersArray, orderItemsArray};
+export {userArray, customersArray , itemsArray, ordersArray, orderItemsArray};

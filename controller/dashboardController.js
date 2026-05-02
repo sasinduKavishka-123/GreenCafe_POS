@@ -8,6 +8,7 @@ import {getCustomerData} from "../model/customerModel.js";
 import {getItemData} from "../model/itemModel.js";
 import {getOrderData} from "../model/posModel.js";
 
+import {app, login} from "./loginController.js";
 
 // -------- content sections ----------------
 const dashboardSection  = $("#dashboard");
@@ -25,6 +26,7 @@ const posBtn        = $('#posNavBtn');
 const customerBtn   = $('#customerNavBtn');
 const itemBtn       = $('#itemNavBtn');
 const orderBtn      = $('#ordersNavBtn');
+const logOutBtn     = $('#logOutBtn');
 
 // -------- card numbers ----------------
 const orderCount = $('#order_count');
@@ -88,4 +90,19 @@ orderBtn.on('click', function(){
     makeSectionDisplayNone();
     orderSection.css({display: 'block'});
     resetOrder();
+});
+
+
+// ------- log out -------------
+logOutBtn.on('click', ()=>{
+    loadCardData();
+    clearPos();
+    resetSelects();
+    cleanCustomerForm();
+    clearItemForm();
+    resetOrder();
+    makeSectionDisplayNone();
+    dashboardSection.css({display: 'block'});
+    app.css({display: "none"});
+    login.css({display: "block"});
 });

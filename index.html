@@ -39,7 +39,7 @@
                 <input type="password" id="inputPassword" class="form-control">
 
                 <div class="d-grid gap-2 d-md-flex justify-content-md-center my-btn-group">
-                    <button type="button" class="btn btn-success">Log in</button>
+                    <button type="button" class="btn btn-success" id="loginBtn">Log in</button>
                 </div>
 
             </div>
@@ -71,7 +71,7 @@
             </li>
         </ol>
 
-        <button type="button" class="btn btn-outline-success logoutBtn">
+        <button type="button" class="btn btn-outline-success logoutBtn" id="logOutBtn">
             Log Out <i class="fa-solid fa-arrow-right-from-bracket"></i>
         </button>
 
@@ -80,10 +80,10 @@
     <!-- navbar -->
     <nav id="navbar">
         <div class="navPointers"></div>
-        <div class="navDataHolder">Date: 2026-04-23</div>
+        <div class="navDataHolder" id="navDateHolder"></div>
 
         <div class="navPointers"></div>
-        <div class="navDataHolder">User: Sasindu Kavishka</div>
+        <div class="navDataHolder" id="navNameHolder"></div>
     </nav>
 
     <!-- main content -->
@@ -435,6 +435,8 @@
 
 <!-- jQuery -->
 <script src="assets/lib/jquery-4.0.0.min.js"></script>
+
+<script type="module" src="controller/loginController.js"></script>
 
 <!-- dashboard controller -->
 <script type="module" src="controller/dashboardController.js"></script>
