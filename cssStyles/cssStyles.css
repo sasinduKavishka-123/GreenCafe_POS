@@ -18,7 +18,7 @@ body{
     background-color: #01c916;
     border: #0E0E0F solid 4px;
     border-radius: 10px;
-    display: none;
+    /*display: none;*/
 }
 
 #logoHolder{
@@ -87,7 +87,7 @@ body{
 
 /*************** app *******************/
 #app{
-    /*display: none;*/
+    display: none;
 }
 
 /*************** sidebar *******************/
