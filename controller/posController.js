@@ -226,7 +226,7 @@ orderCreateBtn.on('click', ()=>{
         confirmButtonColor: "#09ac04",
         cancelButtonColor: "#d60808",
         confirmButtonText: "Yes, Save It!",
-        footer: `<h5>Order ID: ${orderId}</h5> <h5>Customer Name: ${cusName}</h5> <h5>Date: ${date}</h5>  <h5>Grand Total: Rs.${total.toFixed(2)}</h5>`
+        footer: `<h4>Order ID: ${orderId}</h4> <h4>Customer Name: ${cusName}</h4> <h4>Date: ${date}</h4>  <h4>Grand Total: Rs.${total.toFixed(2)}</h4>`
     }).then((result) => {
 
         if (result.isConfirmed){
@@ -238,7 +238,7 @@ orderCreateBtn.on('click', ()=>{
                     icon: "warning",
                     iconColor: "#ff0000"
                 });
-                console.log('ccccccccccc');
+
                 return;
             }
             createOrder(orderId, cusName, date, total.toFixed(2));

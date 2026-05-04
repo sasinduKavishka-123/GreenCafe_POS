@@ -25,8 +25,6 @@ loginBtn.on('click',()=>{
 
     let isCorrect = checkUserData(userName, password);
 
-    console.log(isCorrect);
-
     if(isCorrect === true){
         app.css({display: 'block'});
         login.css({display: 'none'});

@@ -63,19 +63,37 @@ const updateItemData = (id, name, unitPrice, stock) =>{
     }
 };
 
+
+const checkItemsQty = (orderItemsData)=>{
+    let isUpdatable = true;
+    let items = [];
+    let itemDArray = getItemData();
+
+    itemDArray.forEach(i =>{
+        items.push(new Item(i.id, i.name, i.unitPrice, i.stock));
+    })
+
+    orderItemsData.forEach(oid =>{
+        let itemIndex = items.findIndex(i => i.name === oid.itemName);
+        if(itemIndex > -1){
+            if((items[itemIndex].stock - oid.qty) < 0){
+                isUpdatable = false;
+                return;
+            }
+            else{
+                items[itemIndex].stock = items[itemIndex].stock - oid.qty;
+            }
+        }
+    });
+
+    return isUpdatable;
+};
+
 const updateItemQty = (id , qty)=>{
     let itemObj = getItemData().find(item => item.id === id);
     if(itemObj){
-        if((itemObj.stock - qty) < 0){
-            console.log('aaaaaaaa');
-            return false;
-        }
-        else{
-            itemObj.stock = itemObj.stock - qty;
-            return true;
-        }
+        itemObj.stock = itemObj.stock - qty;
     }
-    return false;
 };
 
 
@@ -94,4 +112,4 @@ const getItemData = ()=>{
 };
 
 
-export {addItemData, updateItemData, deleteItemData, getItemData, updateItemQty};
+export {addItemData, updateItemData, deleteItemData, getItemData, updateItemQty, checkItemsQty};
